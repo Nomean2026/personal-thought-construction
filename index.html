@@ -2,10 +2,60 @@
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
-<meta http-equiv="refresh" content="0;url=workbudy/index.html">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>个人思想构建</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;background:#f7f9fc;color:#1f2937;line-height:1.6}
+.hero{background:linear-gradient(135deg,#eff6ff 0%,#f5f3ff 50%,#fef3c7 100%);padding:60px 24px;text-align:center;border-bottom:1px solid #e5e7eb}
+.hero h1{font-size:36px;margin-bottom:12px}
+.hero p{color:#6b7280;font-size:16px;max-width:600px;margin:0 auto}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;max-width:1000px;margin:40px auto;padding:0 24px}
+.card{background:#fff;border:1px solid #e5e7eb;border-radius:16px;padding:28px;text-decoration:none;color:inherit;transition:transform .2s,box-shadow .2s;box-shadow:0 1px 3px rgba(0,0,0,.06)}
+.card:hover{transform:translateY(-4px);box-shadow:0 4px 12px rgba(0,0,0,.1)}
+.card .tag{display:inline-block;font-size:12px;font-weight:600;padding:3px 10px;border-radius:999px;margin-bottom:12px}
+.card h2{font-size:20px;margin-bottom:8px}
+.card p{font-size:14px;color:#6b7280}
+.c1 .tag{background:#eff6ff;color:#2563eb}.c1{border-top:4px solid #2563eb}
+.c2 .tag{background:#f5f3ff;color:#7c3aed}.c2{border-top:4px solid #7c3aed}
+.c3 .tag{background:#fef3c7;color:#d97706}.c3{border-top:4px solid #d97706}
+.c4 .tag{background:#ecfdf5;color:#059669}.c4{border-top:4px solid #059669}
+.footer{text-align:center;color:#9ca3af;font-size:13px;padding:40px 24px}
+</style>
 </head>
 <body>
-<p>正在跳转到 <a href="workbudy/index.html">自我改善教程</a>...</p>
+
+<div class="hero">
+  <h1>个人思想构建</h1>
+  <p>自我改善教程合集 — 从多个视角分析与实践改变</p>
+</div>
+
+<div class="grid">
+  <a class="card c1" href="workbudy/index.html">
+    <span class="tag">workbudy</span>
+    <h2>自我改善教程</h2>
+    <p>从专业心理学与辩证唯物主义双重视角，带你完成内在统一与持续改变。共九章，含HTML与Markdown版本。</p>
+  </a>
+  <a class="card c2" href="mimo/index.html">
+    <span class="tag">mimo</span>
+    <h2>与人交际问题</h2>
+    <p>自我改变系统教程，涵盖原生家庭、沟通障碍、精力管理、敏感性人格等六大板块。</p>
+  </a>
+  <a class="card c3" href="qoderCN/index.html">
+    <span class="tag">qoderCN</span>
+    <h2>教程（qoderCN版）</h2>
+    <p>另一套完整的九章教程，从成因分析到生活系统重构，结构清晰，适合系统学习。</p>
+  </a>
+  <a class="card c4" href="claude/chapter6/index.html">
+    <span class="tag">claude</span>
+    <h2>Claude 版章节</h2>
+    <p>包含第六章（敏感气质与自主性建立）和第七章的详细内容。</p>
+  </a>
+</div>
+
+<div class="footer">
+  个人思想构建 · 自我改善教程合集
+</div>
+
 </body>
 </html>
