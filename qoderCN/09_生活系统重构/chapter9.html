@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第九章 · 生活系统重构</title>
+<style>
+:root{--bg:#f7f9fc;--card:#fff;--ink:#1f2937;--muted:#6b7280;--line:#e5e7eb;--brand:#2563eb;--brand-soft:#eff6ff;--amber:#d97706;--amber-soft:#fef3c7;--green:#059669;--green-soft:#ecfdf5;--rose:#e11d48;--rose-soft:#ffe4e6;--violet:#7c3aed;--violet-soft:#f5f3ff;--shadow:0 1px 3px rgba(0,0,0,.06),0 8px 24px rgba(0,0,0,.04)}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--ink);line-height:1.75;font-size:15px}
+.wrap{max-width:1180px;margin:0 auto;padding:28px 24px 80px}
+.topnav{display:flex;align-items:center;justify-content:space-between;padding:14px 20px;background:var(--card);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);margin-bottom:28px;position:sticky;top:14px;z-index:50}
+.topnav a{color:var(--brand);text-decoration:none;font-weight:600;font-size:14px}
+.topnav .crumb{color:var(--muted);font-size:13px}.topnav .crumb b{color:var(--ink)}
+.hero{background:linear-gradient(135deg,#eff6ff 0%,#f5f3ff 100%);border:1px solid var(--line);border-radius:18px;padding:34px 32px;margin-bottom:30px;box-shadow:var(--shadow)}
+.hero h1{font-size:26px;margin-bottom:10px}.hero .sub{color:var(--muted);font-size:14px;max-width:760px}
+.hero .goal{margin-top:16px;display:inline-block;background:var(--brand);color:#fff;padding:8px 16px;border-radius:999px;font-size:13px}
+h2.sec{font-size:20px;margin:38px 0 16px;padding-left:14px;border-left:5px solid var(--brand)}
+p{margin:10px 0}ul,ol{margin:10px 0 10px 22px}li{margin:6px 0}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:18px 0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px 22px;box-shadow:var(--shadow)}
+.card.amber{background:var(--amber-soft);border-color:#fcd34d}.card.green{background:var(--green-soft);border-color:#a7f3d0}.card.rose{background:var(--rose-soft);border-color:#fecdd3}.card.violet{background:var(--violet-soft);border-color:#ddd6fe}
+.card h4{font-size:15px;margin-bottom:10px}
+table{width:100%;border-collapse:collapse;margin:14px 0;background:var(--card);border-radius:12px;overflow:hidden;box-shadow:var(--shadow)}
+th,td{padding:12px 14px;text-align:left;border-bottom:1px solid var(--line);font-size:14px;vertical-align:top}
+th{background:#f3f4f6;font-weight:600}tr:last-child td{border-bottom:none}
+.term{color:var(--brand);border-bottom:1px dashed var(--brand);cursor:help;position:relative}.term:hover{background:var(--brand-soft)}
+.tip{display:none;position:absolute;left:0;top:130%;width:280px;background:#111827;color:#fff;padding:12px 14px;border-radius:10px;font-size:13px;line-height:1.6;z-index:100;box-shadow:0 6px 20px rgba(0,0,0,.2)}
+.term:hover .tip,.term:focus .tip{display:block}
+.callout{border-left:5px solid var(--amber);background:var(--amber-soft);padding:16px 18px;border-radius:0 12px 12px 0;margin:18px 0}
+.callout.g{border-color:var(--green);background:var(--green-soft)}.callout.b{border-color:var(--brand);background:var(--brand-soft)}.callout.r{border-color:var(--rose);background:var(--rose-soft)}
+.action{background:linear-gradient(135deg,#ecfdf5,#eff6ff);border:1px solid #a7f3d0;border-radius:14px;padding:22px;margin:24px 0}.action h4{color:var(--green);margin-bottom:10px}
+.flow{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:16px 0}.flow .node{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:10px 14px;font-size:13px;box-shadow:var(--shadow)}.flow .node.bad{border-color:#fecdd3;background:var(--rose-soft)}.flow .node.good{border-color:#a7f3d0;background:var(--green-soft)}.flow .arr{color:var(--muted);font-weight:700}
+.svg-box{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;margin:18px 0;box-shadow:var(--shadow)}
+.checklist{list-style:none;margin-left:0}.checklist li{padding:10px 14px;background:var(--card);border:1px solid var(--line);border-radius:10px;margin:8px 0;box-shadow:var(--shadow)}.checklist li::before{content:"☐ ";color:var(--brand);font-weight:700}
+.foot{text-align:center;color:var(--muted);font-size:13px;margin-top:50px;padding-top:24px;border-top:1px solid var(--line)}
+@media(max-width:860px){.two-col{grid-template-columns:1fr}.topnav{position:static}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="topnav">
+    <a href="../index.html">← 返回主页</a>
+    <div class="crumb">教程 / <b>第九章 生活系统重构</b></div>
+    <a href="../index.html">返回主页 →</a>
+  </div>
+  <div class="hero">
+    <h1>第九章 · 生活系统重构</h1>
+    <div class="sub">把前八章所有改变装进一个可持续运行的日常系统。这不是"再学新东西"，而是"把学到的组装起来"。核心：任务三分法 + 时间结构 + 饮食睡眠 + 精力管理 + 正反馈 + 核心三条。</div>
+    <div class="goal">目标：把工具组装成系统 → 让改变变成日常</div>
+  </div>
+
+  <h2 class="sec">9.1 为什么需要"系统"</h2>
+  <div class="callout">"最管用的是行动，只有通过一次次的这种行动的正向反馈，才能客观改善，但也可能反复。"</div>
+  <p>前八章给你的是一个个<b>工具</b>。但工具散落着不会自动运转——你需要一个<b>系统</b>把它们组织起来，让改变变成日常。</p>
+  <p>系统的作用：<b>让你不需要每次都靠意志力去"想起来"，而是让环境结构帮你"自然做到"。</b>状态好时靠主观能动性推进，状态差时靠系统结构兜底。</p>
+
+  <h2 class="sec">9.2 核心三条（你已得出的结论）</h2>
+  <div class="two-col">
+    <div class="card green">
+      <h4>1. 与母亲分开居住</h4>
+      <p>改<b>环境</b>（客观条件）</p>
+      <p>减少旧通路高频激活（第四章、第七章）</p>
+    </div>
+    <div class="card violet">
+      <h4>2. 接纳敏感人格</h4>
+      <p>改<b>对自己的态度</b>（接纳而非对抗）</p>
+      <p>不与特质对抗，为它建立缓冲（第六章）</p>
+    </div>
+  </div>
+  <div class="card amber" style="max-width:50%;margin:0 auto">
+    <h4>3. 尽快行动想干的事</h4>
+    <p>改<b>行动模式</b>（从回避到直接行动）</p>
+    <p>想到就干，缩短从"想到"到"做到"的距离（第二章、第三章）</p>
+  </div>
+
+  <h2 class="sec">9.3 任务三分法（你的原创框架）</h2>
+  <table>
+    <tr><th>类型</th><th>定义</th><th>例子</th><th>安排原则</th></tr>
+    <tr><td><b>想做</b></td><td>自然萌生的想法</td><td>试驾、打球、旅游、和朋友玩</td><td>每天必留时间</td></tr>
+    <tr><td><b>认为要做</b></td><td>理性判断该做的</td><td>学大模型、更新简历、打电话</td><td>每天固定时段</td></tr>
+    <tr><td><b>不得不做</b></td><td>不想做但必须的</td><td>和领导沟通、请假、办手续</td><td>越少越好，脚本化降低消耗</td></tr>
+  </table>
+  <div class="callout b">
+    <b>核心原则：</b><br>
+    ① 第三种越少越好（用脚本化、触发器把它变成第二种甚至第一种）<br>
+    ② 第二种每天固定时段（上午高效时段做，给生活掌控感）<br>
+    ③ 第一种每天必留时间（哪怕30分钟，这是生活的"平衡阀"）
+  </div>
+  <div class="callout r"><b>为什么"想做"很重要：</b>你之前把自己逼到图书馆学习、周末也不放松——这是<b>只有"认为要做"没有"想做"</b>的生活。自主性被完全剥夺，动力枯竭。"想做"的时间不是"浪费"，是给自主性账户充值。</div>
+
+  <h2 class="sec">9.4 每日时间结构</h2>
+  <table>
+    <tr><th>时段</th><th>内容</th><th>类型</th><th>理由</th></tr>
+    <tr><td>早晨</td><td>起床、早餐（含蛋白质）</td><td>基础</td><td>给前额叶供能</td></tr>
+    <tr><td>上午</td><td>"认为要做"的事</td><td>第二种</td><td>高效时段，前额叶最强</td></tr>
+    <tr><td>中午</td><td>午餐（补蛋白质+蔬菜）、休息</td><td>基础</td><td>避免下午血糖低谷</td></tr>
+    <tr><td>下午</td><td>继续"认为要做"或轻量任务</td><td>第二种</td><td>精力递减，做不需高峰的</td></tr>
+    <tr><td>傍晚</td><td>运动/散步</td><td>第一种</td><td>恢复精力，切换状态</td></tr>
+    <tr><td>晚上</td><td>"想做"的事、社交</td><td>第一种+社交</td><td>自主性充值</td></tr>
+    <tr><td>睡前</td><td>放松、不折腾工具、23-24℃</td><td>基础</td><td>为睡眠创造条件</td></tr>
+  </table>
+  <div class="callout"><b>关键：</b>这个结构不是"时间表"（精确到分钟），而是<b>框架</b>（什么时段做什么类型的事）。框架给了方向，但不剥夺灵活性。</div>
+
+  <h2 class="sec">9.5 饮食与睡眠（前额叶的燃料）</h2>
+  <div class="two-col">
+    <div class="card green">
+      <h4>饮食（你已在实践）</h4>
+      <ul>
+        <li>少吃辛辣刺激 ✓</li>
+        <li>补充蛋白质（中午下午偏少）→ 补上</li>
+        <li>增加蔬菜（最大缺陷）→ 补上</li>
+        <li>记录饮食并持续反馈 ✓</li>
+      </ul>
+      <p><b>改善饮食不是"养生"，是给改变提供生理基础。</b></p>
+    </div>
+    <div class="card violet">
+      <h4>睡眠</h4>
+      <p>你的发现：23-24℃ + 60-70%湿度更易入睡 ✓</p>
+      <ul>
+        <li>睡前1小时不折腾工具/不看刺激性内容</li>
+        <li>调节室温到23-24℃</li>
+        <li>固定入睡时间（建立生物钟节律）</li>
+        <li>睡前做放松的事（散步、热水澡）</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2 class="sec">9.6 精力管理</h2>
+  <p>"对精力的消耗最大的就是大脑矛盾和纠结，另外一个就是选择和判断。"</p>
+  <table>
+    <tr><th>消耗源</th><th>解法</th><th>来自</th></tr>
+    <tr><td>大脑矛盾/纠结</td><td>接纳本能反应，不与本能对抗</td><td>第七章</td></tr>
+    <tr><td>选择和判断</td><td>"足够好"标准 + 决策时间盒</td><td>第五章</td></tr>
+    <tr><td>回避带来的焦虑积累</td><td>最小行动法 + 脚本化</td><td>第二章</td></tr>
+    <tr><td>负向思维的内耗</td><td>ABC重构 + 三栏思考</td><td>第八章</td></tr>
+    <tr><td>外界干扰</td><td>物理边界 + 注意力锚定</td><td>第六章</td></tr>
+    <tr><td>与母亲的高频触发</td><td>分开居住 + 结构化沟通</td><td>第七章</td></tr>
+  </table>
+  <div class="callout r"><b>结论：</b>你的精力不是被"做事"消耗的，是被"不做事但一直在想"消耗的。系统的作用就是让"想"变成"做"，把消耗在纠结上的精力转化成行动的能量。</div>
+
+  <h2 class="sec">9.7 正反馈记录本（贯穿全程的引擎）</h2>
+  <div class="action">
+    <h4>从第一章开始的"正反馈记录"</h4>
+    <p>每次做了任何一件"原本会回避但今天做了"的事，立刻记下：日期、做了什么、结果、一句肯定自己的话。</p>
+    <div class="callout g" style="margin:8px 0">
+      <b>已有记录：</b>"2026.7.2 打了公租房电话，他们答应换空调。这是我维护自己权益的一次行动。"
+    </div>
+    <p>这个本子是你的<b>"自我效能账户"存折</b>——账户余额涨了，面对回避任务时的底气就多一点。</p>
+  </div>
+
+  <h2 class="sec">9.8 系统全景图</h2>
+  <div class="svg-box">
+    <svg viewBox="0 0 680 400" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+      <!-- 地基 -->
+      <rect x="20" y="20" width="640" height="80" rx="10" fill="#ecfdf5" stroke="#6ee7b7"/>
+      <text x="340" y="45" font-size="14" fill="#065f46" text-anchor="middle" font-weight="bold">【地基】核心三条</text>
+      <text x="140" y="70" font-size="12" fill="#065f46" text-anchor="middle">分开居住（改环境）</text>
+      <text x="340" y="70" font-size="12" fill="#065f46" text-anchor="middle">接纳敏感（改态度）</text>
+      <text x="540" y="70" font-size="12" fill="#065f46" text-anchor="middle">尽快行动（改模式）</text>
+      <text x="340" y="90" font-size="16" fill="#059669" text-anchor="middle">↓ 支撑</text>
+
+      <!-- 结构 -->
+      <rect x="20" y="110" width="640" height="80" rx="10" fill="#eff6ff" stroke="#bfdbfe"/>
+      <text x="340" y="135" font-size="14" fill="#1e40af" text-anchor="middle" font-weight="bold">【结构】每日时间框架</text>
+      <text x="120" y="160" font-size="12" fill="#1e3a8a" text-anchor="middle">上午：认为要做</text>
+      <text x="280" y="160" font-size="12" fill="#1e3a8a" text-anchor="middle">下午：轻量任务</text>
+      <text x="450" y="160" font-size="12" fill="#1e3a8a" text-anchor="middle">晚上：想做+社交</text>
+      <text x="580" y="160" font-size="12" fill="#1e3a8a" text-anchor="middle">基础：睡眠饮食</text>
+      <text x="340" y="180" font-size="16" fill="#1e40af" text-anchor="middle">↓ 驱动</text>
+
+      <!-- 引擎 -->
+      <rect x="20" y="200" width="640" height="60" rx="10" fill="#fef3c7" stroke="#fcd34d"/>
+      <text x="340" y="225" font-size="14" fill="#92400e" text-anchor="middle" font-weight="bold">【引擎】正反馈记录</text>
+      <text x="340" y="245" font-size="12" fill="#92400e" text-anchor="middle">每次行动+1条 → 自我效能账户↑ → 下次更有底气</text>
+      <text x="340" y="270" font-size="16" fill="#d97706" text-anchor="middle">↓ 兜底</text>
+
+      <!-- 工具箱 -->
+      <rect x="20" y="280" width="640" height="100" rx="10" fill="#f5f3ff" stroke="#ddd6fe"/>
+      <text x="340" y="305" font-size="14" fill="#5b21b6" text-anchor="middle" font-weight="bold">【工具箱】前八章的方法</text>
+      <text x="120" y="330" font-size="11" fill="#5b21b6" text-anchor="middle">最小行动 / 脚本化 / 触发器</text>
+      <text x="300" y="330" font-size="11" fill="#5b21b6" text-anchor="middle">2分钟法则 / 如果-那么</text>
+      <text x="480" y="330" font-size="11" fill="#5b21b6" text-anchor="middle">足够好 / 时间盒 / 锁定</text>
+      <text x="150" y="355" font-size="11" fill="#5b21b6" text-anchor="middle">物理边界 / 注意力锚定</text>
+      <text x="340" y="355" font-size="11" fill="#5b21b6" text-anchor="middle">接纳本能 / 物理分离</text>
+      <text x="530" y="355" font-size="11" fill="#5b21b6" text-anchor="middle">ABC重构 / 三栏思考</text>
+    </svg>
+  </div>
+
+  <h2 class="sec">9.9 本章实践清单（全套教程启动清单）</h2>
+  <ul class="checklist">
+    <li>确认"正反馈记录"文件已建好，已有至少1条记录</li>
+    <li>制定一个简单的每日时间框架（不需要精确，有框架即可）</li>
+    <li>把"想做"的事写下来，每天至少安排一件</li>
+    <li>评估核心三条的执行状态，列出下一步行动</li>
+    <li>本周做一件"满足自己欲望"的事（如试驾、出去放松）</li>
+    <li>继续记录饮食，增加蛋白质和蔬菜摄入</li>
+    <li>改善睡眠环境（温度、湿度、睡前不折腾工具）</li>
+  </ul>
+
+  <h2 class="sec">9.10 全套教程总结</h2>
+  <div class="callout b">
+    <b>教程逻辑链：</b><br>
+    第一章 看清系统 → 第二章 打破回避链 → 第三章 固化动机 → 第四章 换模板<br>
+    → 第五章 夺回精力 → 第六章 夺回注意力 → 第七章 改变触发条件<br>
+    → 第八章 重构认知 → 第九章 装进系统
+  </div>
+  <div class="callout g">
+    <b>一句话总结全套教程：</b><br><br>
+    你是一台运行着旧程序、生理低电量、但<b>完全可以重写程序的机器</b>。重写的入口是应用层的小行动，重写的燃料是正反馈，重写的耐心来自"反复是规律不是失败"。从今天起，你在给自己造一个新的模板——不是靠想明白，而是靠一次次做到。
+  </div>
+
+  <div class="foot">
+    <a href="../index.html" style="color:var(--brand)">← 返回主页</a>　|　
+    <a href="../01_总论_成因分析/chapter1.html" style="color:var(--brand)">回到第一章 →</a>
+  </div>
+</div>
+</body>
+</html>

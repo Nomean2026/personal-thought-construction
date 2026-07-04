@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第九章 · 生活系统重构</title>
+<style>
+:root{--bg:#f7f9fc;--card:#fff;--ink:#1f2937;--muted:#6b7280;--line:#e5e7eb;--brand:#2563eb;--brand-soft:#eff6ff;--amber:#d97706;--amber-soft:#fef3c7;--green:#059669;--green-soft:#ecfdf5;--rose:#e11d48;--rose-soft:#ffe4e6;--violet:#7c3aed;--violet-soft:#f5f3ff;--shadow:0 1px 3px rgba(0,0,0,.06),0 8px 24px rgba(0,0,0,.04)}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--ink);line-height:1.75;font-size:15px}
+.wrap{max-width:1180px;margin:0 auto;padding:28px 24px 80px}
+.topnav{display:flex;align-items:center;justify-content:space-between;padding:14px 20px;background:var(--card);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);margin-bottom:28px;position:sticky;top:14px;z-index:50}
+.topnav a{color:var(--brand);text-decoration:none;font-weight:600;font-size:14px}
+.topnav .crumb{color:var(--muted);font-size:13px}.topnav .crumb b{color:var(--ink)}
+.hero{background:linear-gradient(135deg,#ecfdf5,#eff6ff);border:1px solid var(--line);border-radius:18px;padding:34px 32px;margin-bottom:30px;box-shadow:var(--shadow)}
+.hero h1{font-size:26px;margin-bottom:10px}.hero .sub{color:var(--muted);font-size:14px;max-width:760px}
+h2.sec{font-size:20px;margin:38px 0 16px;padding-left:14px;border-left:5px solid var(--brand)}
+h3.sub{font-size:16.5px;margin:24px 0 12px;color:#111827}
+p{margin:10px 0}ul,ol{margin:10px 0 10px 22px}li{margin:6px 0}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:18px 0}
+.three-col{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin:18px 0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px 22px;box-shadow:var(--shadow)}
+.card.amber{background:var(--amber-soft);border-color:#fcd34d}.card.green{background:var(--green-soft);border-color:#a7f3d0}.card.rose{background:var(--rose-soft);border-color:#fecdd3}.card.b{background:var(--brand-soft);border-color:#bfdbfe}.card.v{background:var(--violet-soft);border-color:#ddd6fe}
+.card h4{font-size:15px;margin-bottom:10px}
+table{width:100%;border-collapse:collapse;margin:14px 0;background:var(--card);border-radius:12px;overflow:hidden;box-shadow:var(--shadow)}
+th,td{padding:12px 14px;text-align:left;border-bottom:1px solid var(--line);font-size:14px;vertical-align:top}
+th{background:#f3f4f6;font-weight:600}tr:last-child td{border-bottom:none}
+.term{color:var(--brand);border-bottom:1px dashed var(--brand);cursor:help;position:relative}.term:hover{background:var(--brand-soft)}
+.tip{display:none;position:absolute;left:0;top:130%;width:280px;background:#111827;color:#fff;padding:12px 14px;border-radius:10px;font-size:13px;line-height:1.6;z-index:100;box-shadow:0 6px 20px rgba(0,0,0,.2)}
+.term:hover .tip,.term:focus .tip{display:block}
+.callout{border-left:5px solid var(--amber);background:var(--amber-soft);padding:16px 18px;border-radius:0 12px 12px 0;margin:18px 0}
+.callout.g{border-color:var(--green);background:var(--green-soft)}.callout.b{border-color:var(--brand);background:var(--brand-soft)}.callout.r{border-color:var(--rose);background:var(--rose-soft)}.callout.v{border-color:var(--violet);background:var(--violet-soft)}
+.action{background:linear-gradient(135deg,#ecfdf5,#eff6ff);border:1px solid #a7f3d0;border-radius:14px;padding:22px;margin:24px 0}
+.action h4{color:var(--green);margin-bottom:10px}
+.svg-box{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;margin:18px 0;box-shadow:var(--shadow)}
+.checklist{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px 22px;box-shadow:var(--shadow);margin:18px 0}
+.checklist li{list-style:none;margin-left:0}
+.foot{text-align:center;color:var(--muted);font-size:13px;margin-top:50px;padding-top:24px;border-top:1px solid var(--line)}
+.timeline{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 22px;box-shadow:var(--shadow);margin:14px 0}
+.tl-row{display:grid;grid-template-columns:110px 1fr;gap:14px;padding:8px 0;border-bottom:1px dashed var(--line)}
+.tl-row:last-child{border-bottom:none}
+.tl-time{font-weight:600;color:var(--brand);font-size:13px}
+.tl-content{font-size:13px}
+.tl-tag{display:inline-block;padding:2px 8px;border-radius:999px;font-size:11px;margin-left:6px}
+.tag-want{background:#f5f3ff;color:#6d28d9}.tag-should{background:#eff6ff;color:#1e40af}.tag-must{background:#ffe4e6;color:#9f1239}
+@media(max-width:860px){.two-col,.three-col{grid-template-columns:1fr}.topnav{position:static}.tl-row{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="topnav">
+    <a href="../08_负向思维与认知重构/chapter8.html">← 第八章</a>
+    <div class="crumb">教程 / <b>第九章 生活系统重构</b></div>
+    <a href="../index.html">返回主页 ↑</a>
+  </div>
+
+  <div class="hero">
+    <h1>第九章 · 生活系统重构</h1>
+    <div class="sub">把前八章的所有改变，装进一个可持续运行的日常系统。这不是又一章理论，是你生活的"操作系统"。核心：任务三分法、时间结构、饮食睡眠、精力管理、正反馈、核心三条。</div>
+  </div>
+
+  <h2 class="sec">9.1 为什么需要"系统"而不是"意志"</h2>
+  <p>前八章给你的是认知和工具。但工具散落着用，会被生活惯性冲散——状态好时能用，状态差时就忘了。<b>系统的作用，是让正确的事变成默认动作，不依赖你的状态。</b></p>
+  <div class="callout b">你的核心洞察已说明这点："最管用的是行动，只有通过一次次的这种行动的正向反馈，才能客观改善，但也有可能反复。"系统的目的就是：<b>降低行动门槛、固定正反馈、容纳反复</b>。</div>
+
+  <h2 class="sec">9.2 任务三分法（你的原创，完全正确）</h2>
+  <div class="three-col">
+    <div class="card v">
+      <h4>① 想做</h4>
+      <p>自然萌生的想法</p>
+      <p style="font-size:12px;color:var(--muted)">试驾、打球、旅游、买花</p>
+      <p><b>每天必留时间，哪怕30分钟</b></p>
+    </div>
+    <div class="card b">
+      <h4>② 认为要做</h4>
+      <p>理性判断该做</p>
+      <p style="font-size:12px;color:var(--muted)">学大模型、跑代码、投简历</p>
+      <p><b>每天固定时段集中做</b></p>
+    </div>
+    <div class="card rose">
+      <h4>③ 不得不做</h4>
+      <p>不想做但必须</p>
+      <p style="font-size:12px;color:var(--muted)">请假、打电话、回领导</p>
+      <p><b>越少越好；尽快做完解脱</b></p>
+    </div>
+  </div>
+  <div class="callout g"><b>关键原则：</b>① 第三种越少越好（能委托、能简化、能预办的提前办）② 第二种每天固定时间给掌控感 ③ <b>第一种每天必留时间——这是生活平衡的命脉</b>。你之前把自己逼到图书馆学习，砍掉的就是这一块，结果整个系统崩溃。</div>
+  <div class="callout"><b>为什么"想做"最重要：</b><span class="term">自我决定理论<span class="tip">Deci & Ryan：人的内在动机来自三要素：自主感（我选的）、胜任感（我能做到）、关系感（有连接）。"想做"的事主要提供自主感。长期只做"应该"和"不得不"，自主感枯竭，动力崩溃。</span></span>的"自主感"主要来自做"我想做"的事。长期只做"应该"和"不得不"，自主感枯竭，动力崩溃。买花那段改变你，部分原因就是它属于"想做"被允许了。</div>
+
+  <h2 class="sec">9.3 每日时间结构（建议模板，可调）</h2>
+  <div class="timeline">
+    <div class="tl-row"><div class="tl-time">07:00-08:00</div><div class="tl-content">起床、缓慢启动、吃早餐（蛋白质+蔬菜）</div></div>
+    <div class="tl-row"><div class="tl-time">08:00-11:30</div><div class="tl-content"><span class="tl-tag tag-should">认为要做</span> 学习/投简历/跑代码（状态最好的时间给最难的事）</div></div>
+    <div class="tl-row"><div class="tl-time">11:30-13:00</div><div class="tl-content">午餐（蛋白质+蔬菜）+ 短休</div></div>
+    <div class="tl-row"><div class="tl-time">13:00-15:00</div><div class="tl-content"><span class="tl-tag tag-should">认为要做</span> 续：或处理<span class="tl-tag tag-must">不得不做</span>（如发消息）</div></div>
+    <div class="tl-row"><div class="tl-time">15:00-16:00</div><div class="tl-content">散步/恢复（高敏感需要低刺激时间）</div></div>
+    <div class="tl-row"><div class="tl-time">16:00-18:00</div><div class="tl-content">灵活：学习/杂事/小任务（清晰反馈类）</div></div>
+    <div class="tl-row"><div class="tl-time">18:00-19:30</div><div class="tl-content">晚餐 + 与母亲简短互动（结构化时段）</div></div>
+    <div class="tl-row"><div class="tl-time">19:30-21:30</div><div class="tl-content"><span class="tl-tag tag-want">想做</span> 朋友/兴趣/试驾/放松（命脉，不可砍）</div></div>
+    <div class="tl-row"><div class="tl-time">21:30-22:30</div><div class="tl-content">准备睡眠：降温到23-24℃、湿度60-70%、不刷折腾类内容</div></div>
+    <div class="tl-row"><div class="tl-time">22:30-23:00</div><div class="tl-content">睡前：写正反馈记录、预设明天的"如果—那么"</div></div>
+    <div class="tl-row"><div class="tl-time">23:00</div><div class="tl-content">睡觉</div></div>
+  </div>
+  <div class="callout"><b>这不是死规定，是脚手架。</b>状态差时砍掉"认为要做"，保留"想做"和睡眠；状态好时多做一些。但骨架在，你就不会完全迷失。</div>
+
+  <h2 class="sec">9.4 饮食（你已在实践，继续+优化）</h2>
+  <div class="two-col">
+    <div class="card green">
+      <h4>四条原则</h4>
+      <ol>
+        <li>少辛辣刺激 <span style="color:#059669">✓ 已在做</span></li>
+        <li>补充蛋白质：中午和下午摄入偏少 → 重点补这两顿<br><span style="font-size:12px;color:var(--muted)">早餐：鸡蛋/牛奶/豆浆；午餐：肉/鱼/豆腐+蔬菜；晚餐：适量</span></li>
+        <li>增加蔬菜（目前最大缺陷）→ 每顿必有可见蔬菜</li>
+        <li>记录饮食并持续反馈 <span style="color:#059669">✓ 你已意识到</span></li>
+      </ol>
+    </div>
+    <div class="card b">
+      <h4>为什么饮食是改变的前提</h4>
+      <p>前额叶是全身最耗能脑区之一。</p>
+      <div class="flow" style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin:10px 0">
+        <span style="background:#fef3c7;padding:6px 10px;border-radius:6px;font-size:12px">蛋白质不足</span>
+        <span>→</span>
+        <span style="background:#fef3c7;padding:6px 10px;border-radius:6px;font-size:12px">神经递质合成↓</span>
+        <span>→</span>
+        <span style="background:#ffe4e6;padding:6px 10px;border-radius:6px;font-size:12px">前额叶功能↓</span>
+        <span>→</span>
+        <span style="background:#fee2e2;padding:6px 10px;border-radius:6px;font-size:12px">回避更强</span>
+      </div>
+      <p><b>吃对不是养生，是给改变供能。</b></p>
+    </div>
+  </div>
+
+  <h2 class="sec">9.5 睡眠（你已在改善，关键参数）</h2>
+  <div class="two-col">
+    <div class="card b">
+      <h4>你的发现（正确）</h4>
+      <ul>
+        <li>温度 23-24℃</li>
+        <li>湿度 60-70%</li>
+        <li>控制大脑兴奋</li>
+      </ul>
+    </div>
+    <div class="card green">
+      <h4>补充关键点</h4>
+      <ul>
+        <li><b>固定起床时间</b>（比固定睡觉时间更重要）——稳定生物钟</li>
+        <li><b>早晨见光</b>（拉窗帘/外出10分钟）——重置昼夜节律</li>
+        <li><b>下午2点后不咖啡</b>（半衰期6小时）</li>
+        <li><b>睡前1小时不屏幕</b>（蓝光抑制褪黑素）——对你最难但最有效</li>
+        <li><b>睡不着不硬熬</b>——起来做无聊的事，困了再回床</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2 class="sec">9.6 精力管理（核心：减少内耗）</h2>
+  <p>你的洞察："对精力的消耗最大的就是大脑矛盾和纠结，另外一个就是选择和判断。"</p>
+  <div class="two-col">
+    <div class="card amber">
+      <h4>减少内耗</h4>
+      <ul>
+        <li>决策时间盒（第五章）——减少选择消耗</li>
+        <li>"如果—那么"预设（第三章）——减少"要不要"拉锯</li>
+        <li>工具锁定（第五章）——减少折腾消耗</li>
+        <li>脚本化沟通（第二章）——减少临场组织消耗</li>
+      </ul>
+    </div>
+    <div class="card green">
+      <h4>保证恢复</h4>
+      <ul>
+        <li>睡眠（核心）</li>
+        <li>"想做"时段（心理恢复）</li>
+        <li>独处时间（高敏感必需）</li>
+        <li>与女朋友/朋友的正向互动</li>
+      </ul>
+    </div>
+  </div>
+  <div class="callout r"><b>核心原则：</b>你的精力账户余额本来就低（术后+高敏感+内耗），不能再被折腾和拉锯偷走。<b>保护精力 &gt; 完成任务。</b></div>
+
+  <h2 class="sec">9.7 正反馈记录本（贯穿全教程的工具）</h2>
+  <div class="card green">
+    <h4>每天睡前2分钟</h4>
+    <div class="callout g" style="margin:8px 0">
+      日期：2026.7.2<br>
+      今天做的一件"原本会回避但做了"的事：打了公租房电话<br>
+      结果：他们答应换空调<br>
+      一句肯定：这是我维护自己权益的一步，是进步。<br><br>
+      明天的一个小目标：发消息确认换空调的具体日期
+    </div>
+    <p><b>为什么有效：</b></p>
+    <ul>
+      <li>对抗负面偏好（大脑会忘成功、记失败）</li>
+      <li>充值自我效能账户</li>
+      <li>提供"清晰反馈"（第八章你认识到大脑需要这个）</li>
+      <li>睡前写，强化记忆巩固（睡眠中神经通路重塑）</li>
+    </ul>
+  </div>
+
+  <h2 class="sec">9.8 核心三条（你自己总结的，强化）</h2>
+  <div class="three-col">
+    <div class="card rose">
+      <h4>① 与母亲分开居住</h4>
+      <p>降低旧模板激活</p>
+      <p>保护改变成果</p>
+    </div>
+    <div class="card v">
+      <h4>② 接纳自己是敏感性人格</h4>
+      <p>不与本能对抗</p>
+      <p>用物理边界和工具补偿</p>
+    </div>
+    <div class="card green">
+      <h4>③ 尽快行动想干的事</h4>
+      <p>用假期去干事情</p>
+      <p>不把自己逼到图书馆</p>
+    </div>
+  </div>
+  <div class="callout b"><b>第三条的延伸（你的原话，非常对）：</b>"既然是我的假期，就用假期去干事情，而不是每天把自己逼到图书馆去学习、总结。周末没有多少工作时，我应该出去放松，当天享受自己的生活。"<br><br><b>享受生活不是偷懒，是给系统充电。</b>一个永远在"应该"里的人，迟早崩溃；一个允许自己"想做"的人，才能持续。</div>
+
+  <h2 class="sec">9.9 关于"已经打公租房电话"的肯定</h2>
+  <div class="callout">你在文档最后说："刚刚我打了公租房的电话，这个问题算是初步解决了一点……这也是一个很好的进步，我应该去肯定它。"</div>
+  <div class="callout g"><b>这个判断完全正确，而且这是整份文档里最重要的一句话之一。</b><br>因为：① 你做了一次"原本会回避但做了"的事——这正是全书的核心目标 ② 你意识到要肯定它——这正是正反馈机制 ③ 你同时意识到"没要具体日期"是可改进的——这是不满足现状<br><br><b>肯定进步 + 不满足现状 = 持续改进。你已经掌握了这个公式。</b></div>
+
+  <h2 class="sec">9.10 容纳反复：系统的最后一环</h2>
+  <div class="callout r"><b>整个系统的最后一个原则，也是最重要的心态：反复是规律，不是失败。</b></div>
+  <div class="svg-box">
+    <svg viewBox="0 0 680 220" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+      <text x="20" y="25" font-size="13" fill="#6b7280">改变之路是曲线，不是直线（每次反复后恢复更快、峰值更高 = 成功）</text>
+      <line x1="40" y1="180" x2="640" y2="180" stroke="#e5e7eb" stroke-width="2"/>
+      <text x="40" y="200" font-size="11" fill="#9ca3af">时间</text>
+      <text x="20" y="100" font-size="11" fill="#9ca3af" transform="rotate(-90 20 100)">状态</text>
+      <path d="M 40 160 Q 100 100, 160 120 Q 200 140, 240 90 Q 290 70, 340 100 Q 380 120, 430 60 Q 490 40, 550 70 Q 600 80, 640 30" stroke="#059669" stroke-width="3" fill="none"/>
+      <circle cx="160" cy="120" r="5" fill="#e11d48"/>
+      <text x="160" y="140" text-anchor="middle" font-size="10" fill="#e11d48">反复1</text>
+      <circle cx="340" cy="100" r="5" fill="#e11d48"/>
+      <text x="340" y="120" text-anchor="middle" font-size="10" fill="#e11d48">反复2</text>
+      <circle cx="550" cy="70" r="5" fill="#e11d48"/>
+      <text x="550" y="90" text-anchor="middle" font-size="10" fill="#e11d48">反复3</text>
+      <text x="430" y="50" font-size="11" fill="#059669" font-weight="bold">峰值越来越高</text>
+      <text x="180" y="170" font-size="10" fill="#6b7280">恢复慢</text>
+      <text x="360" y="160" font-size="10" fill="#6b7280">恢复快了</text>
+      <text x="570" y="105" font-size="10" fill="#6b7280">恢复更快</text>
+    </svg>
+  </div>
+  <div class="two-col">
+    <div class="card amber">
+      <h4>应对反复</h4>
+      <ol>
+        <li><b>不放大：</b>一次反复≠全部失败</li>
+        <li><b>不自责：</b>自责消耗精力，精力是恢复的本钱</li>
+        <li><b>看趋势：</b>关注"两次好状态之间的间隔有没有变短"</li>
+        <li><b>快恢复：</b>反复后用最小行动（2分钟法则）重启，不等"状态好"</li>
+      </ol>
+    </div>
+    <div class="card green">
+      <h4>成功的定义</h4>
+      <p>不是"再也不反复"。</p>
+      <p><b>是"每次反复后恢复得更快一点"。</b></p>
+      <p>这就是成功。</p>
+    </div>
+  </div>
+
+  <h2 class="sec">9.11 系统启动清单</h2>
+  <div class="checklist">
+    <ul>
+      <li>☐ 把"任务三分法"写下来，今天的事分成三类</li>
+      <li>☐ 按建议模板排一个今日时间结构（可调）</li>
+      <li>☐ 今天必留30分钟给"想做"的事</li>
+      <li>☐ 晚上睡前写正反馈记录（哪怕只有一条）</li>
+      <li>☐ 把"核心三条"贴在能看到的地方</li>
+      <li>☐ 接受"会反复"这个事实，给自己一个温和的承诺</li>
+    </ul>
+  </div>
+
+  <h2 class="sec">9.12 全教程结语</h2>
+  <div class="callout b">回顾你从文档开头到现在的旅程：</div>
+  <ul>
+    <li>你用辩证唯物主义框架理解了自己（客观环境是主要的，主观能动性是启动器）</li>
+    <li>你识别了原生家庭的代际遗传机制（模仿—实践—内化）</li>
+    <li>你自己总结出了"学—抄—做"三阶段（神经可塑性 = 学习）</li>
+    <li>你发现了买花转变这个"改变是可能的"的实证</li>
+    <li>你提出了任务三分法这个科学的生活管理框架</li>
+    <li>你最后打了一个原本会回避的电话，并意识到要肯定它</li>
+  </ul>
+  <div class="callout g"><b>你比自己以为的更清醒，也更有能力改变。</b><br><br>这套教程做的事，是把你的零散洞察系统化，给你每一个洞察配上可执行的工具，并装进一个能持续运行的生活系统里。<br><br>剩下的，是行动。哪怕很小。哪怕会反复。</div>
+  <div class="callout v" style="font-size:16px;text-align:center">"想到啥就赶紧干，这个是最好的方法。"<br>——这是你自己的话。<br><br>现在带着这套系统，去干。</div>
+  <div class="action">
+    <h4 style="text-align:center">✓ 你已经开始了。</h4>
+  </div>
+
+  <div class="foot">上一章：<a href="../08_负向思维与认知重构/chapter8.html" style="color:var(--brand)">第八章</a> &nbsp;|&nbsp; <a href="../index.html" style="color:var(--brand)">返回主页</a></div>
+
+</div>
+</body>
+</html>

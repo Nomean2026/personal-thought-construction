@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第六章：饮食、睡眠与生活方式</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --primary: #FDCB6E;
+            --primary-dark: #F39C12;
+            --primary-light: #FFF9E6;
+            --accent: #E17055;
+            --bg: #FAFBFE;
+            --card-bg: #FFFFFF;
+            --text: #2D3436;
+            --text-light: #636E72;
+            --border: #E8ECF1;
+            --success: #00B894;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            background: var(--bg); color: var(--text); line-height: 1.9;
+        }
+        .hero {
+            background: linear-gradient(135deg, #ffeaa7 0%, #fdcb6e 100%);
+            color: #2D3436; padding: 60px 40px; position: relative;
+        }
+        .hero .back-link {
+            position: absolute; top: 20px; left: 20px;
+            color: rgba(0,0,0,0.5); text-decoration: none; font-size: 0.9em;
+        }
+        .hero .back-link:hover { color: #2D3436; }
+        .hero h1 { font-size: 2.4em; font-weight: 700; margin-bottom: 12px; }
+        .hero p { font-size: 1.15em; opacity: 0.8; }
+        .container { max-width: 1100px; margin: 0 auto; padding: 40px 20px; }
+        h2 { font-size: 1.8em; color: var(--primary-dark); margin: 48px 0 24px; padding-bottom: 12px; border-bottom: 2px solid var(--primary-light); }
+        h3 { font-size: 1.3em; color: var(--text); margin: 32px 0 16px; }
+        h4 { font-size: 1.1em; color: var(--primary-dark); margin: 24px 0 12px; }
+        p { margin-bottom: 14px; }
+        .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin: 20px 0; }
+        .card { background: var(--card-bg); border-radius: 12px; padding: 24px; box-shadow: 0 2px 12px rgba(0,0,0,0.05); }
+        .card.highlight { border-left: 4px solid var(--primary-dark); }
+        .card.success { border-left: 4px solid var(--success); }
+        table { width: 100%; border-collapse: collapse; margin: 16px 0; background: var(--card-bg); border-radius: 12px; overflow: hidden; box-shadow: 0 2px 12px rgba(0,0,0,0.05); }
+        th { background: var(--primary-dark); color: white; padding: 14px 16px; text-align: left; font-weight: 600; }
+        td { padding: 12px 16px; border-bottom: 1px solid var(--border); }
+        tr:last-child td { border-bottom: none; }
+        tr:hover td { background: var(--primary-light); }
+        .tooltip {
+            position: relative; border-bottom: 1px dashed var(--primary-dark); cursor: help; font-weight: 500;
+        }
+        .tooltip .tip-text {
+            visibility: hidden; background: #2D3436; color: white; padding: 10px 14px;
+            border-radius: 8px; font-size: 0.85em; line-height: 1.5; position: absolute;
+            bottom: 130%; left: 50%; transform: translateX(-50%); width: 280px;
+            text-align: center; opacity: 0; transition: opacity 0.3s; z-index: 100; font-weight: 400;
+        }
+        .tooltip:hover .tip-text { visibility: visible; opacity: 1; }
+        .practice-box {
+            background: linear-gradient(135deg, #FFF9E6, #FFF3CC); border-radius: 12px;
+            padding: 24px; margin: 20px 0; border: 1px solid #FFE082;
+        }
+        .practice-box h4 { color: #E67E22; margin-bottom: 12px; }
+        .practice-box ol, .practice-box ul { padding-left: 20px; }
+        .practice-box li { margin-bottom: 8px; }
+        .quote {
+            background: var(--primary-light); border-left: 4px solid var(--primary-dark);
+            padding: 16px 20px; margin: 16px 0; border-radius: 0 8px 8px 0;
+            font-style: italic; color: var(--text);
+        }
+        .nav-links {
+            display: flex; justify-content: space-between; margin-top: 60px;
+            padding-top: 30px; border-top: 1px solid var(--border);
+        }
+        .nav-links a {
+            color: var(--primary-dark); text-decoration: none; padding: 10px 20px;
+            border-radius: 8px; transition: background 0.3s;
+        }
+        .nav-links a:hover { background: var(--primary-light); }
+        .plate-diagram {
+            display: flex; justify-content: center; align-items: center; gap: 0;
+            margin: 24px 0;
+        }
+        .plate-section {
+            padding: 20px; text-align: center; color: white; font-weight: 600;
+        }
+        .plate-section.veggie { background: #00B894; width: 40%; border-radius: 0 50% 50% 0; }
+        .plate-section.protein { background: #E17055; width: 25%; }
+        .plate-section.carb { background: #6C5CE7; width: 20%; border-radius: 50% 0 0 50%; }
+        .sleep-cycle {
+            display: flex; gap: 4px; margin: 16px 0; justify-content: center;
+        }
+        .sleep-stage {
+            padding: 12px 8px; border-radius: 8px; text-align: center;
+            font-size: 0.8em; font-weight: 600; color: white; min-width: 60px;
+        }
+        .env-compare {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 16px 0;
+        }
+        .env-item {
+            background: var(--card-bg); border-radius: 12px; padding: 16px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+        }
+        .env-item .status {
+            display: inline-block; padding: 2px 8px; border-radius: 4px;
+            font-size: 0.8em; font-weight: 600; margin-bottom: 8px;
+        }
+        .env-item .status.good { background: #D4EDDA; color: #155724; }
+        .env-item .status.bad { background: #F8D7DA; color: #721C24; }
+        .timeline {
+            position: relative; padding-left: 30px; margin: 20px 0;
+        }
+        .timeline::before {
+            content: ''; position: absolute; left: 10px; top: 0; bottom: 0;
+            width: 3px; background: var(--primary);
+        }
+        .timeline-item {
+            position: relative; margin-bottom: 20px; padding: 12px 16px;
+            background: var(--card-bg); border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+        }
+        .timeline-item::before {
+            content: ''; position: absolute; left: -24px; top: 16px;
+            width: 12px; height: 12px; border-radius: 50%;
+            background: var(--primary-dark);
+        }
+        .timeline-item .time {
+            font-size: 0.8em; color: var(--primary-dark); font-weight: 700;
+        }
+        .final-summary {
+            background: linear-gradient(135deg, #6c5ce7, #a29bfe);
+            color: white; border-radius: 16px; padding: 40px;
+            margin-top: 60px;
+        }
+        .final-summary h2 { color: white; border-bottom-color: rgba(255,255,255,0.3); }
+        .final-summary .summary-grid {
+            display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;
+        }
+        .final-summary .summary-card {
+            background: rgba(255,255,255,0.15); border-radius: 12px; padding: 20px;
+            backdrop-filter: blur(10px);
+        }
+        .final-summary .summary-card h4 { color: white; margin-bottom: 8px; font-size: 1em; }
+        .final-summary .summary-card p { font-size: 0.9em; opacity: 0.9; margin: 0; }
+        @media (max-width: 768px) {
+            .two-col, .env-compare { grid-template-columns: 1fr; }
+            .hero h1 { font-size: 1.8em; }
+            .final-summary .summary-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="hero">
+    <a href="../index.html" class="back-link">← 返回总览</a>
+    <h1>第六章：饮食、睡眠与生活方式</h1>
+    <p>用生理基础的改善支撑心理状态的转变</p>
+</div>
+
+<div class="container">
+
+    <h2>引言</h2>
+    <p>你提到"要改善饮食，睡眠和思想"，并且已经在做一些调整。这是一个非常好的开始。</p>
+    <p>身体是心灵的容器。当身体状态不好时，心理状态也会受到影响。</p>
+
+    <h2>第一节：饮食与心理健康的关联</h2>
+
+    <h3>1.1 肠脑轴</h3>
+    <p>近年来的研究发现，肠道和大脑之间存在双向通信系统，称为<span class="tooltip">肠脑轴<span class="tip-text">肠脑轴（Gut-Brain Axis）：肠道和大脑之间的双向通信系统。约95%的血清素在肠道中产生，饮食直接影响肠道菌群，进而影响情绪和认知。</span></span>。</p>
+
+    <div class="card highlight">
+        <h4>关键发现</h4>
+        <ul style="padding-left: 20px;">
+            <li>约95%的<span class="tooltip">血清素<span class="tip-text">血清素（Serotonin）：被称为"快乐激素"，调节情绪、睡眠、食欲。约95%在肠道中产生，饮食直接影响其水平。</span></span>（"快乐激素"）在肠道中产生</li>
+            <li>肠道菌群的失衡可能导致焦虑和抑郁</li>
+            <li>饮食直接影响肠道菌群的组成</li>
+        </ul>
+    </div>
+
+    <h3>1.2 营养与情绪的关系</h3>
+
+    <table>
+        <thead>
+            <tr><th>营养素</th><th>作用</th><th>缺乏时的影响</th><th>食物来源</th></tr>
+        </thead>
+        <tbody>
+            <tr><td><strong>Omega-3</strong></td><td>抗炎、支持大脑功能</td><td>情绪低落、注意力下降</td><td>深海鱼、核桃、亚麻籽</td></tr>
+            <tr><td><strong>B族维生素</strong></td><td>神经系统正常运作</td><td>疲劳、焦虑、失眠</td><td>全谷物、绿叶蔬菜、鸡蛋</td></tr>
+            <tr><td><strong>镁</strong></td><td>放松肌肉、稳定情绪</td><td>焦虑、失眠、肌肉紧张</td><td>深绿叶菜、坚果、黑巧克力</td></tr>
+            <tr><td><strong>锌</strong></td><td>支持免疫和神经功能</td><td>情绪波动、注意力下降</td><td>牡蛎、牛肉、南瓜籽</td></tr>
+            <tr><td><strong>维生素D</strong></td><td>调节情绪</td><td>抑郁、疲劳</td><td>阳光、鱼肝油、蛋黄</td></tr>
+            <tr><td><strong>铁</strong></td><td>携带氧气到大脑</td><td>疲劳、注意力下降</td><td>红肉、菠菜、豆类</td></tr>
+        </tbody>
+    </table>
+
+    <h3>1.3 你的饮食调整方案</h3>
+
+    <div class="card success">
+        <h4>你已经做到的</h4>
+        <ul style="padding-left: 20px;">
+            <li>少吃辛辣刺激性的东西 ✓</li>
+            <li>补充蛋白质（目前中午和下午偏少）</li>
+            <li>增加蔬菜摄入（目前最大的缺陷）</li>
+        </ul>
+    </div>
+
+    <h4>理想的餐盘比例</h4>
+    <div class="plate-diagram">
+        <div class="plate-section carb">主食<br>25%</div>
+        <div class="plate-section protein">蛋白质<br>25%</div>
+        <div class="plate-section veggie">蔬菜<br>50%</div>
+    </div>
+
+    <div class="practice-box">
+        <h4>每日饮食建议</h4>
+        <ul>
+            <li><strong>早餐</strong>：鸡蛋 + 全麦面包 + 牛奶，或燕麦粥 + 坚果 + 水果</li>
+            <li><strong>午餐</strong>：主食 + 蛋白质（肉/鱼/豆腐）+ 蔬菜（至少占餐盘一半）</li>
+            <li><strong>晚餐</strong>：清淡为主，不要吃太饱，避免辛辣油腻</li>
+            <li><strong>加餐</strong>：水果、坚果、酸奶，避免高糖零食</li>
+        </ul>
+    </div>
+
+    <h2>第二节：睡眠的科学管理</h2>
+
+    <h3>2.1 睡眠周期</h3>
+    <p>一个完整的睡眠周期包括：</p>
+
+    <div class="sleep-cycle">
+        <div class="sleep-stage" style="background: #DFE6E9;">NREM 1<br><small>浅睡</small><br><small>1-5分钟</small></div>
+        <div class="sleep-stage" style="background: #B2BEC3;">NREM 2<br><small>轻睡</small><br><small>20-25分钟</small></div>
+        <div class="sleep-stage" style="background: #636E72;">NREM 3<br><small>深睡</small><br><small>20-25分钟</small></div>
+        <div class="sleep-stage" style="background: #6C5CE7;">REM<br><small>做梦</small><br><small>20-25分钟</small></div>
+    </div>
+    <p>每晚需要4-6个完整周期，即<strong>7-9小时</strong>。</p>
+
+    <h3>2.2 环境因素对睡眠的影响</h3>
+    <p>你发现了重要信息：温度23-24℃、湿度60-70%时更容易入睡。这与研究一致。</p>
+
+    <div class="env-compare">
+        <div class="env-item">
+            <div class="status good">已解决</div>
+            <h4>温度：23-24℃</h4>
+            <p>最佳范围18-24℃，你的发现完全正确。</p>
+        </div>
+        <div class="env-item">
+            <div class="status good">已解决</div>
+            <h4>湿度：60-70%</h4>
+            <p>最佳范围40-70%，你的发现完全正确。</p>
+        </div>
+        <div class="env-item">
+            <div class="status bad">需改善</div>
+            <h4>噪音：临近路很吵</h4>
+            <p>最佳范围低于30分贝。建议使用降噪耳塞或白噪音。</p>
+        </div>
+        <div class="env-item">
+            <div class="status bad">需改善</div>
+            <h4>光线：没法关灯</h4>
+            <p>最佳环境应完全黑暗。建议使用眼罩。</p>
+        </div>
+    </div>
+
+    <h3>2.3 失眠的认知行为疗法（CBT-I）</h3>
+    <p><span class="tooltip">CBT-I<span class="tip-text">失眠的认知行为疗法：治疗失眠的首选方法，比安眠药更有效且无副作用。核心包括：睡眠限制、刺激控制、认知重构和睡眠卫生教育。</span></span>是治疗失眠的首选方法。</p>
+
+    <div class="two-col">
+        <div class="card">
+            <h4>睡眠限制</h4>
+            <ul style="padding-left: 20px;">
+                <li>只在真正困的时候上床</li>
+                <li>如果20分钟睡不着，起来做点放松的事</li>
+                <li>困了再回去</li>
+            </ul>
+        </div>
+        <div class="card">
+            <h4>刺激控制</h4>
+            <ul style="padding-left: 20px;">
+                <li>床只用来睡觉（不看手机、不工作）</li>
+                <li>每天固定时间起床（包括周末）</li>
+                <li>不要在床上"躺着等睡着"</li>
+            </ul>
+        </div>
+        <div class="card">
+            <h4>认知重构</h4>
+            <ul style="padding-left: 20px;">
+                <li>不要担心"睡不够怎么办"</li>
+                <li>不要数时间"已经过了多久"</li>
+                <li>接受"今晚可能睡不好"，反而更容易睡着</li>
+            </ul>
+        </div>
+    </div>
+
+    <h2>第三节：整体生活方式设计</h2>
+
+    <h3>3.1 每日生活结构</h3>
+
+    <div class="timeline">
+        <div class="timeline-item">
+            <div class="time">早上 6:30-8:00</div>
+            <p>起床、洗漱、简单运动（散步/拉伸）、健康早餐</p>
+        </div>
+        <div class="timeline-item">
+            <div class="time">上午 8:00-12:00</div>
+            <p>处理"不得不做的事"（打电话、请假）或"认为要做的事"（学习、工作）</p>
+        </div>
+        <div class="timeline-item">
+            <div class="time">中午 12:00-14:00</div>
+            <p>午餐（注意营养搭配）、短暂休息（20-30分钟午睡）</p>
+        </div>
+        <div class="timeline-item">
+            <div class="time">下午 14:00-18:00</div>
+            <p>继续"认为要做的事"或外出活动（试驾、见朋友）</p>
+        </div>
+        <div class="timeline-item">
+            <div class="time">晚上 18:00-22:00</div>
+            <p>晚餐、"想做的事"（打球、看电影、放松）、和朋友相处</p>
+        </div>
+        <div class="timeline-item">
+            <div class="time">睡前 22:00-23:00</div>
+            <p>放松活动（阅读、听音乐）、避免使用电子设备、准备入睡</p>
+        </div>
+    </div>
+
+    <h3>3.2 满足自己的欲望</h3>
+    <div class="card highlight">
+        <h4>为什么满足欲望很重要？</h4>
+        <ul style="padding-left: 20px;">
+            <li><strong>多巴胺奖励</strong>：满足欲望会释放多巴胺，让你感到快乐</li>
+            <li><strong>掌控感</strong>：做自己想做的事，增强对生活的掌控感</li>
+            <li><strong>平衡</strong>：只有"应该做"的事，生活会变得枯燥</li>
+        </ul>
+        <p style="margin-top: 12px;"><strong>操作原则</strong>：每天至少做一件"想做的事"，每周至少一次"奖励自己"的活动。</p>
+    </div>
+
+    <h3>3.3 从"逼自己"到"照顾自己"</h3>
+
+    <table>
+        <thead>
+            <tr><th>"逼自己"</th><th>"照顾自己"</th></tr>
+        </thead>
+        <tbody>
+            <tr><td>我必须去学习</td><td>我选择去学习，因为这对我的未来有帮助</td></tr>
+            <tr><td>我不能休息</td><td>我需要休息，这样我才能更好地学习</td></tr>
+            <tr><td>我不应该浪费时间</td><td>我允许自己放松，这是必要的</td></tr>
+        </tbody>
+    </table>
+
+    <h2>第四节：实践记录系统</h2>
+
+    <div class="practice-box">
+        <h4>饮食日记模板</h4>
+        <div style="background: white; padding: 16px; border-radius: 8px; font-family: monospace; font-size: 0.9em; margin-top: 12px;">
+日期：<br><br>
+早餐：时间___ 食物___ 感受___<br>
+午餐：时间___ 食物___ 感受___<br>
+晚餐：时间___ 铜物___ 感受___<br>
+加餐：时间___ 食物___<br><br>
+今日饮水量：___杯<br>
+蔬菜摄入：___份<br>
+蛋白质摄入：是否足够？是/否
+        </div>
+    </div>
+
+    <div class="practice-box">
+        <h4>睡眠追踪模板</h4>
+        <div style="background: white; padding: 16px; border-radius: 8px; font-family: monospace; font-size: 0.9em; margin-top: 12px;">
+日期：<br><br>
+上床时间：___<br>
+入睡时间（估计）：___<br>
+夜醒次数：___<br>
+起床时间：___<br>
+睡眠质量（1-10）：___<br><br>
+影响因素：温度___ 噪音___ 心情___ 咖啡因___
+        </div>
+    </div>
+
+    <div class="card highlight" style="margin-top: 40px;">
+        <h4>本章小结</h4>
+        <ul style="padding-left: 20px;">
+            <li>肠脑轴连接着肠道和大脑，饮食直接影响心理健康</li>
+            <li>睡眠环境的温度、湿度、噪音、光线都很重要</li>
+            <li>CBT-I是治疗失眠的首选方法</li>
+            <li>每日生活结构需要平衡三种类型的事</li>
+            <li>满足欲望是必要的，不是浪费时间</li>
+            <li>从"逼自己"转变为"照顾自己"</li>
+        </ul>
+    </div>
+
+    <div class="final-summary">
+        <h2 style="margin-top: 0;">全教程总结</h2>
+        <div class="summary-grid">
+            <div class="summary-card">
+                <h4>第一章：原生家庭</h4>
+                <p>你的行为模式是原生家庭塑造的，但神经可塑性意味着改变是可能的。</p>
+            </div>
+            <div class="summary-card">
+                <h4>第二章：沟通障碍</h4>
+                <p>不是感觉好了才行动，而是行动了才感觉好。从微习惯开始。</p>
+            </div>
+            <div class="summary-card">
+                <h4>第三章：与母亲</h4>
+                <p>理解不等于认同。课题分离，把注意力放回"你的课题"。</p>
+            </div>
+            <div class="summary-card">
+                <h4>第四章：精力管理</h4>
+                <p>决策疲劳是真实的。限制选择时间，"够好就行"。</p>
+            </div>
+            <div class="summary-card">
+                <h4>第五章：敏感性</h4>
+                <p>敏感是特质，不是缺陷。建立三重边界，正念觉察。</p>
+            </div>
+            <div class="summary-card">
+                <h4>第六章：生活方式</h4>
+                <p>身体是心灵的容器。从"逼自己"到"照顾自己"。</p>
+            </div>
+        </div>
+        <p style="text-align: center; margin-top: 24px; font-size: 1.1em; opacity: 0.9;">
+            <strong>记住：改变是一个渐进的、非线性的过程。每一次小小的行动都算数。你已经在路上了。</strong>
+        </p>
+    </div>
+
+    <div class="nav-links">
+        <a href="../05_敏感性人格与边界/index.html">← 第五章：敏感性人格与边界</a>
+        <a href="../index.html">返回总览 →</a>
+    </div>
+
+</div>
+
+</body>
+</html>

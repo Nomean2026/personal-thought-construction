@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第八章 · 负向思维与认知重构</title>
+<style>
+:root{--bg:#f7f9fc;--card:#fff;--ink:#1f2937;--muted:#6b7280;--line:#e5e7eb;--brand:#2563eb;--brand-soft:#eff6ff;--amber:#d97706;--amber-soft:#fef3c7;--green:#059669;--green-soft:#ecfdf5;--rose:#e11d48;--rose-soft:#ffe4e6;--violet:#7c3aed;--violet-soft:#f5f3ff;--shadow:0 1px 3px rgba(0,0,0,.06),0 8px 24px rgba(0,0,0,.04)}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--ink);line-height:1.75;font-size:15px}
+.wrap{max-width:1180px;margin:0 auto;padding:28px 24px 80px}
+.topnav{display:flex;align-items:center;justify-content:space-between;padding:14px 20px;background:var(--card);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);margin-bottom:28px;position:sticky;top:14px;z-index:50}
+.topnav a{color:var(--brand);text-decoration:none;font-weight:600;font-size:14px}
+.topnav .crumb{color:var(--muted);font-size:13px}.topnav .crumb b{color:var(--ink)}
+.hero{background:linear-gradient(135deg,#eff6ff 0%,#f5f3ff 100%);border:1px solid var(--line);border-radius:18px;padding:34px 32px;margin-bottom:30px;box-shadow:var(--shadow)}
+.hero h1{font-size:26px;margin-bottom:10px}.hero .sub{color:var(--muted);font-size:14px;max-width:760px}
+.hero .goal{margin-top:16px;display:inline-block;background:var(--brand);color:#fff;padding:8px 16px;border-radius:999px;font-size:13px}
+h2.sec{font-size:20px;margin:38px 0 16px;padding-left:14px;border-left:5px solid var(--brand)}
+p{margin:10px 0}ul,ol{margin:10px 0 10px 22px}li{margin:6px 0}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:18px 0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px 22px;box-shadow:var(--shadow)}
+.card.amber{background:var(--amber-soft);border-color:#fcd34d}.card.green{background:var(--green-soft);border-color:#a7f3d0}.card.rose{background:var(--rose-soft);border-color:#fecdd3}.card.violet{background:var(--violet-soft);border-color:#ddd6fe}
+.card h4{font-size:15px;margin-bottom:10px}
+table{width:100%;border-collapse:collapse;margin:14px 0;background:var(--card);border-radius:12px;overflow:hidden;box-shadow:var(--shadow)}
+th,td{padding:12px 14px;text-align:left;border-bottom:1px solid var(--line);font-size:14px;vertical-align:top}
+th{background:#f3f4f6;font-weight:600}tr:last-child td{border-bottom:none}
+.term{color:var(--brand);border-bottom:1px dashed var(--brand);cursor:help;position:relative}.term:hover{background:var(--brand-soft)}
+.tip{display:none;position:absolute;left:0;top:130%;width:280px;background:#111827;color:#fff;padding:12px 14px;border-radius:10px;font-size:13px;line-height:1.6;z-index:100;box-shadow:0 6px 20px rgba(0,0,0,.2)}
+.term:hover .tip,.term:focus .tip{display:block}
+.callout{border-left:5px solid var(--amber);background:var(--amber-soft);padding:16px 18px;border-radius:0 12px 12px 0;margin:18px 0}
+.callout.g{border-color:var(--green);background:var(--green-soft)}.callout.b{border-color:var(--brand);background:var(--brand-soft)}.callout.r{border-color:var(--rose);background:var(--rose-soft)}
+.action{background:linear-gradient(135deg,#ecfdf5,#eff6ff);border:1px solid #a7f3d0;border-radius:14px;padding:22px;margin:24px 0}.action h4{color:var(--green);margin-bottom:10px}
+.flow{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:16px 0}.flow .node{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:10px 14px;font-size:13px;box-shadow:var(--shadow)}.flow .node.bad{border-color:#fecdd3;background:var(--rose-soft)}.flow .node.good{border-color:#a7f3d0;background:var(--green-soft)}.flow .arr{color:var(--muted);font-weight:700}
+.svg-box{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;margin:18px 0;box-shadow:var(--shadow)}
+.checklist{list-style:none;margin-left:0}.checklist li{padding:10px 14px;background:var(--card);border:1px solid var(--line);border-radius:10px;margin:8px 0;box-shadow:var(--shadow)}.checklist li::before{content:"☐ ";color:var(--brand);font-weight:700}
+.foot{text-align:center;color:var(--muted);font-size:13px;margin-top:50px;padding-top:24px;border-top:1px solid var(--line)}
+@media(max-width:860px){.two-col{grid-template-columns:1fr}.topnav{position:static}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="topnav">
+    <a href="../index.html">← 返回主页</a>
+    <div class="crumb">教程 / <b>第八章 负向思维与认知重构</b></div>
+    <a href="../09_生活系统重构/chapter9.html">第九章 →</a>
+  </div>
+  <div class="hero">
+    <h1>第八章 · 负向思维与认知重构</h1>
+    <div class="sub">理解负向思维的成因与自验证循环，用ABC认知重构和三栏思考打破"想负面结果就想终结"的模式。核心案例：换工作想负面结果就想终结、家庭氛围偏负向、危机意识过强。</div>
+    <div class="goal">目标：识别负向循环 → 用ABC质疑 → 建立确定性反馈</div>
+  </div>
+
+  <h2 class="sec">8.1 现象：总是先看到不好和危险的点</h2>
+  <div class="callout">"换工作的问题，就会比较想负面的结果，然后就会想终结。家庭氛围中存在一些负面倾向，整体心态偏向负向。遇到什么事，就会一直想到不好和危险的点。"</div>
+  <p>这不是"悲观主义"可以概括的。这是一种<b>自动运行的负向思维程序</b>——在你的意识介入之前，大脑已经先跑到了"最坏的情况"。</p>
+
+  <h2 class="sec">8.2 成因：为什么你的大脑默认走"负向"</h2>
+  <div class="two-col">
+    <div class="card rose">
+      <h4>8.2.1 原生家庭的负向模板</h4>
+      <p>你的母亲呈现典型的<b>危机导向思维</b>：遇到事先想到不好和危险的点。你在这种环境中长大，大脑学到的默认程序就是"先扫描危险"。</p>
+      <p>这不完全是坏事——危机意识有进化价值。但当它成为<b>唯一模式</b>时，你看到的世界就全是危险，没有机会。</p>
+    </div>
+    <div class="card amber">
+      <h4>8.2.2 杏仁核威胁检测敏感</h4>
+      <p>你的高敏感气质意味着杏仁核基线更活跃。杏仁核的功能就是<span class="term">威胁检测<span class="tip">杏仁核是大脑的情绪警报中心，默认设置是"有危险吗？"而不是"有机会吗？"。高敏感者基线更活跃，所以扫描更频繁、更强烈。</span></span>。</p>
+      <p>对你的大脑来说，"换工作"首先被扫描为"风险"，而不是"机会"。</p>
+    </div>
+  </div>
+  <div class="two-col">
+    <div class="card violet">
+      <h4>8.2.3 确认偏误</h4>
+      <p><span class="term">确认偏误<span class="tip">Confirmation Bias：人倾向于寻找和记住支持自己已有信念的信息，忽略相反的信息。当你已有"换工作会不好"的信念时，你会只想到失败的案例，忽略成功的案例。</span></span>：当你已有"换工作会不好"的信念时，你会：</p>
+      <ul>
+        <li>只想到失败的案例</li>
+        <li>忽略成功的案例</li>
+        <li>把不确定的信息解读为"风险"</li>
+      </ul>
+      <p>结果是：负向信念被"证据"不断强化（虽然那些"证据"是你选择性注意的结果）。</p>
+    </div>
+    <div class="card">
+      <h4>8.2.4 领导的焦虑传递</h4>
+      <p>"她会把一件事反复修改，而没有答案，然后把焦虑传递给我。"</p>
+      <p>你的领导呈现的是<b>不确定性焦虑</b>：反复修改、没有结论、把焦虑扩散。你本就敏感，在这种环境中，负向思维被进一步激活。</p>
+    </div>
+  </div>
+
+  <h2 class="sec">8.3 机制：负向思维的自验证循环</h2>
+  <div class="svg-box">
+    <svg viewBox="0 0 680 260" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+      <rect x="250" y="10" width="180" height="35" rx="8" fill="#eff6ff" stroke="#bfdbfe"/>
+      <text x="340" y="33" font-size="12" fill="#1e40af" text-anchor="middle" font-weight="bold">面对新机会（换工作）</text>
+      <path d="M 340 45 L 340 65" stroke="#6b7280" stroke-width="2" marker-end="url(#g1)"/>
+      <text x="360" y="58" font-size="11" fill="#6b7280">杏仁核扫描"风险"</text>
+
+      <rect x="250" y="70" width="180" height="35" rx="8" fill="#fef3c7" stroke="#fcd34d"/>
+      <text x="340" y="92" font-size="12" fill="#92400e" text-anchor="middle">负向预期（"万一更差呢"）</text>
+      <path d="M 340 105 L 340 125" stroke="#6b7280" stroke-width="2" marker-end="url(#g1)"/>
+      <text x="360" y="118" font-size="11" fill="#6b7280">确认偏误</text>
+
+      <rect x="250" y="130" width="180" height="35" rx="8" fill="#fee2e2" stroke="#fca5a5"/>
+      <text x="340" y="152" font-size="12" fill="#991b1b" text-anchor="middle">焦虑↑ → 回避/终结</text>
+      <path d="M 340 165 L 340 185" stroke="#6b7280" stroke-width="2" marker-end="url(#g1)"/>
+
+      <rect x="250" y="190" width="180" height="35" rx="8" fill="#fecdd3" stroke="#fda4af"/>
+      <text x="340" y="212" font-size="12" fill="#9f1239" text-anchor="middle">没有新经验</text>
+
+      <!-- 循环箭头 -->
+      <path d="M 250 207 L 120 207 L 120 88 L 245 88" stroke="#e11d48" stroke-width="2" fill="none" marker-end="url(#g1)" stroke-dasharray="5 4" opacity="0.6"/>
+      <text x="120" y="150" font-size="11" fill="#e11d48" text-anchor="middle">"果然不该换"</text>
+      <text x="120" y="165" font-size="11" fill="#e11d48" text-anchor="middle">负向预期被"验证"</text>
+
+      <!-- 右侧标注 -->
+      <rect x="480" y="120" width="180" height="80" rx="8" fill="#ecfdf5" stroke="#6ee7b7"/>
+      <text x="570" y="145" font-size="12" fill="#065f46" text-anchor="middle" font-weight="bold">打破闭环的唯一方法：</text>
+      <text x="570" y="165" font-size="11" fill="#065f46" text-anchor="middle">获得与负向预期相反的经验</text>
+      <text x="570" y="185" font-size="11" fill="#065f46" text-anchor="middle">→ 必须先行动才能获得</text>
+
+      <defs><marker id="g1" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#6b7280"/></marker></defs>
+    </svg>
+  </div>
+  <div class="callout r"><b>这就是负向思维最阴险的地方：</b>它通过阻止你行动，阻止你获得"可能成功"的经验，从而"证明"自己的负向预期是对的。它是一个<b>自验证的闭环</b>。</div>
+
+  <h2 class="sec">8.4 方法：四个工具重构认知</h2>
+  <div class="two-col">
+    <div class="card green">
+      <h4>工具1：ABC认知重构</h4>
+      <p><span class="term">认知行为疗法<span class="tip">CBT，Beck提出。核心：不是事件直接导致情绪结果，而是你对事件的解释（信念）导致了结果。改变信念就能改变结果。</span></span>的核心：</p>
+      <ul>
+        <li><b>A</b>（事件）：换工作</li>
+        <li><b>B</b>（信念）："万一更差""我没技术""投了没人要"</li>
+        <li><b>C</b>（结果）：焦虑、回避、想终结</li>
+      </ul>
+      <p><b>关键：不是A导致C，是B导致C。</b></p>
+      <p><b>操作：</b>写下ABC，然后质疑B——"证据是什么？有没有可能更好？概率各多少？"</p>
+      <p>质疑B不是"强行乐观"，而是<b>用事实校准</b>。</p>
+    </div>
+    <div class="card violet">
+      <h4>工具2："最坏—最好—最可能"三栏思考</h4>
+      <p>当大脑只跑"最坏情况"时，强制它跑三条：</p>
+      <table style="font-size:13px">
+        <tr><th></th><th>内容</th><th>概率</th></tr>
+        <tr><td><b>最坏</b></td><td>换了更差，收入降低</td><td>10%?</td></tr>
+        <tr><td><b>最好</b></td><td>收入更好、领导好、成长快</td><td>30%?</td></tr>
+        <tr><td><b>最可能</b></td><td>有好有坏，但有机会</td><td>60%?</td></tr>
+      </table>
+      <p><b>原理：</b>你的大脑默认只跑"最坏"这一栏。三栏思考强制它看到全貌。而且最坏情况的概率往往远低于直觉判断。</p>
+    </div>
+  </div>
+  <div class="two-col">
+    <div class="card amber">
+      <h4>工具3：建立确定性反馈的小任务</h4>
+      <p>"安全型家庭的清晰反馈机制是大脑的刚需。做一些具有清晰目标和反馈的事情，从而有掌控感。"</p>
+      <p>把"换工作"这个模糊大任务拆成有清晰反馈的小任务：</p>
+      <ul>
+        <li>"今天更新简历教育经历"（完成=确定）</li>
+        <li>"明天投1个岗位"（投了=确定）</li>
+        <li>"本周联系前部门领导约饭"（发了=确定）</li>
+      </ul>
+      <p>每个小任务都有<b>清晰目标+清晰反馈+可完成</b>，给大脑掌控感。</p>
+    </div>
+    <div class="card rose">
+      <h4>工具4：识别并隔离领导的焦虑传递</h4>
+      <p>她反复修改、没有结论时，在做的事叫<span class="term">焦虑扩散<span class="tip">当一个人无法容忍不确定性时，会通过反复行为、要求他人来"分散"自己的焦虑。这不是针对你，是她的应对方式。</span></span>。</p>
+      <p><b>识别：</b>"这是她的焦虑，不是我的问题。"</p>
+      <p><b>隔离：</b>不把"她反复修改"解读为"我做得不好"。设界限："我已经按要求做了，她要改是她的事。"</p>
+    </div>
+  </div>
+
+  <h2 class="sec">8.5 本章实践清单</h2>
+  <div class="callout b"><b>选1-2个，本周做到。</b></div>
+  <ul class="checklist">
+    <li>下次发现自己"想负面结果就想终结"时，写下ABC，质疑B</li>
+    <li>对换工作这件事做一次"最坏—最好—最可能"三栏思考</li>
+    <li>把一个模糊的大任务拆成3个有清晰反馈的小任务</li>
+    <li>下次领导反复修改时，练习"识别并隔离"——"这是她的焦虑"</li>
+    <li>往"正反馈记录"加一条：记录一次"看到了正面可能性"的经历</li>
+  </ul>
+
+  <h2 class="sec">8.6 小结</h2>
+  <div class="callout b"><b>负向思维的本质：</b>原生家庭负向模板 + 杏仁核威胁检测敏感 + 确认偏误 = 默认扫描危险、想负面结果、然后回避行动、然后没有新经验、然后负向预期被"验证"的自验证闭环。</div>
+  <div class="flow">
+    <span class="node good">ABC质疑信念</span><span class="arr">+</span>
+    <span class="node good">三栏思考</span><span class="arr">+</span>
+    <span class="node good">确定性反馈小任务</span><span class="arr">+</span>
+    <span class="node good">隔离焦虑传递</span>
+  </div>
+  <div class="callout g"><b>你不是悲观，你的大脑只是默认走了一条"先看危险"的路。你要做的不是消灭这条路，而是修一条"也看机会"的平行路——用事实、用小步行动、用正反馈，一条一条地铺。</b></div>
+
+  <div class="foot">下一章：<a href="../09_生活系统重构/chapter9.html" style="color:var(--brand)">第九章 生活系统重构 →</a></div>
+</div>
+</body>
+</html>

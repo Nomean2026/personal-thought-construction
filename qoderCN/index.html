@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>与人交际问题 · 自我改变系统教程</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --primary: #4A90D9;
+            --primary-light: #E8F0FE;
+            --accent: #FF6B6B;
+            --bg: #F8FAFE;
+            --card-bg: #FFFFFF;
+            --text: #2C3E50;
+            --text-light: #7F8C8D;
+            --border: #E8ECF1;
+            --success: #27AE60;
+            --warning: #F39C12;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.8;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 80px 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+        }
+
+        .hero h1 {
+            font-size: 2.8em;
+            font-weight: 700;
+            margin-bottom: 16px;
+            position: relative;
+        }
+
+        .hero p {
+            font-size: 1.2em;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .intro-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 60px;
+            align-items: start;
+        }
+
+        .intro-text h2 {
+            font-size: 1.8em;
+            color: var(--primary);
+            margin-bottom: 16px;
+        }
+
+        .intro-text p {
+            color: var(--text-light);
+            margin-bottom: 12px;
+        }
+
+        .principles-card {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 32px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+        }
+
+        .principles-card h3 {
+            color: var(--primary);
+            margin-bottom: 20px;
+            font-size: 1.3em;
+        }
+
+        .principle-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 16px;
+            padding: 12px;
+            border-radius: 8px;
+            background: var(--primary-light);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .principle-item:hover {
+            transform: translateX(4px);
+            box-shadow: 0 2px 8px rgba(74,144,217,0.15);
+        }
+
+        .principle-item .num {
+            background: var(--primary);
+            color: white;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.85em;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .principle-item strong {
+            display: block;
+            color: var(--text);
+            margin-bottom: 4px;
+        }
+
+        .principle-item span {
+            font-size: 0.9em;
+            color: var(--text-light);
+        }
+
+        .chapters-section h2 {
+            font-size: 2em;
+            text-align: center;
+            margin-bottom: 40px;
+            color: var(--text);
+        }
+
+        .chapters-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 24px;
+        }
+
+        .chapter-card {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 32px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+            transition: all 0.3s;
+            cursor: pointer;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            border-left: 4px solid transparent;
+        }
+
+        .chapter-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+            border-left-color: var(--primary);
+        }
+
+        .chapter-card .chapter-num {
+            font-size: 3em;
+            font-weight: 800;
+            color: var(--primary);
+            opacity: 0.2;
+            line-height: 1;
+            margin-bottom: 8px;
+        }
+
+        .chapter-card h3 {
+            font-size: 1.3em;
+            margin-bottom: 12px;
+            color: var(--text);
+        }
+
+        .chapter-card p {
+            color: var(--text-light);
+            font-size: 0.95em;
+        }
+
+        .chapter-card .tags {
+            margin-top: 16px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .chapter-card .tag {
+            background: var(--primary-light);
+            color: var(--primary);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8em;
+        }
+
+        .learning-path {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 16px;
+            padding: 40px;
+            margin-top: 60px;
+            text-align: center;
+        }
+
+        .learning-path h2 {
+            margin-bottom: 24px;
+        }
+
+        .path-steps {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 0;
+            flex-wrap: wrap;
+        }
+
+        .path-step {
+            background: rgba(255,255,255,0.15);
+            padding: 16px 28px;
+            border-radius: 12px;
+            font-size: 1.1em;
+            backdrop-filter: blur(10px);
+        }
+
+        .path-arrow {
+            font-size: 1.5em;
+            margin: 0 8px;
+            opacity: 0.7;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 40px;
+            color: var(--text-light);
+            font-size: 0.9em;
+        }
+
+        .tooltip {
+            position: relative;
+            border-bottom: 1px dashed var(--primary);
+            cursor: help;
+        }
+
+        .tooltip .tip-text {
+            visibility: hidden;
+            background: #333;
+            color: white;
+            padding: 8px 12px;
+            border-radius: 8px;
+            font-size: 0.85em;
+            position: absolute;
+            bottom: 125%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 250px;
+            text-align: center;
+            opacity: 0;
+            transition: opacity 0.3s;
+            z-index: 10;
+        }
+
+        .tooltip:hover .tip-text {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        @media (max-width: 768px) {
+            .intro-section { grid-template-columns: 1fr; }
+            .hero h1 { font-size: 2em; }
+            .path-steps { flex-direction: column; }
+            .path-arrow { transform: rotate(90deg); }
+        }
+    </style>
+</head>
+<body>
+
+<div class="hero">
+    <h1>与人交际问题</h1>
+    <p>从专业心理学与辩证唯物主义视角出发，系统性梳理社交障碍的成因、机制与改变路径</p>
+</div>
+
+<div class="container">
+    <div class="intro-section">
+        <div class="intro-text">
+            <h2>为什么会有这套教程？</h2>
+            <p>你描述了一系列困扰多年的问题：害怕打电话、抗拒与领导沟通、逃避行动、容易被外界影响、与母亲的紧张关系、精力被决策和纠结消耗……</p>
+            <p>这些看似不同的问题，背后有着共同的根源。这套教程不是"心灵鸡汤"，而是一份<strong>科学的自我认知与行动指南</strong>。</p>
+            <p>它基于依恋理论、认知行为疗法（CBT）、神经可塑性研究，以及辩证唯物主义的哲学视角。</p>
+            <p style="margin-top: 20px; padding: 16px; background: #FFF3CD; border-radius: 8px; border-left: 4px solid #F39C12;">
+                <strong>核心提醒：</strong>改变是一个渐进的、非线性的过程。不要期望一夜之间脱胎换骨。每一次小小的行动都算数。
+            </p>
+        </div>
+
+        <div class="principles-card">
+            <h3>四大核心理念</h3>
+            <div class="principle-item">
+                <div class="num">1</div>
+                <div>
+                    <strong>神经可塑性</strong>
+                    <span>大脑的神经通路可以通过新的经验和行为不断重塑。原生家庭塑造了你的"初始程序"，但这个程序可以被修改。</span>
+                </div>
+            </div>
+            <div class="principle-item">
+                <div class="num">2</div>
+                <div>
+                    <strong>行动优先</strong>
+                    <span>真正的改变来自一次又一次的小行动，用正向反馈强化新的神经通路。想到就干，是最好的方法。</span>
+                </div>
+            </div>
+            <div class="principle-item">
+                <div class="num">3</div>
+                <div>
+                    <strong>环境重塑</strong>
+                    <span>物质决定意识。主动改变环境（物理空间、社交圈、日常习惯），是改变思维模式的最有效途径。</span>
+                </div>
+            </div>
+            <div class="principle-item">
+                <div class="num">4</div>
+                <div>
+                    <strong>理解不等于认同</strong>
+                    <span>理解母亲的行为模式，是为了让你从情绪反应中解脱出来，而不是要求你接受不合理的行为。</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="chapters-section">
+        <h2>教程章节</h2>
+        <div class="chapters-grid">
+            <a href="01_总论_成因分析/chapter1.html" class="chapter-card">
+                <div class="chapter-num">01</div>
+                <h3>总论：成因全方位剖析</h3>
+                <p>把"你"作为一个完整系统讲清楚——成长过程、性格本身、生理因素、理论工具箱。这是后续所有章节的地基。</p>
+                <div class="tags">
+                    <span class="tag">三层模型</span>
+                    <span class="tag">依恋理论</span>
+                    <span class="tag">神经可塑性</span>
+                </div>
+            </a>
+            <a href="02_沟通抗拒与权益维护/chapter2.html" class="chapter-card">
+                <div class="chapter-num">02</div>
+                <h3>沟通抗拒与权益维护</h3>
+                <p>从公租房空调到领导请假到投简历，一条"回避链"。最小行动法、脚本化沟通、权益维护阶梯。</p>
+                <div class="tags">
+                    <span class="tag">回避链</span>
+                    <span class="tag">脚本化沟通</span>
+                    <span class="tag">权益维护</span>
+                </div>
+            </a>
+            <a href="03_行动瘫痪与间歇性动机/chapter3.html" class="chapter-card">
+                <div class="chapter-num">03</div>
+                <h3>行动瘫痪与间歇性动机</h3>
+                <p>睡前想明白醒来又抗拒，"两个自己"的拉锯。抓住清醒时刻固化、2分钟法则、状态管理优先。</p>
+                <div class="tags">
+                    <span class="tag">状态依赖</span>
+                    <span class="tag">2分钟法则</span>
+                    <span class="tag">预设计划</span>
+                </div>
+            </a>
+            <a href="04_原生家庭代际遗传/chapter4.html" class="chapter-card">
+                <div class="chapter-num">04</div>
+                <h3>原生家庭代际遗传</h3>
+                <p>你的模式与母亲高度同构。模仿—实践—内化的神经通路，学—抄—做三阶段，寻找安全型新模板。</p>
+                <div class="tags">
+                    <span class="tag">代际传递</span>
+                    <span class="tag">模板复制</span>
+                    <span class="tag">学抄做</span>
+                </div>
+            </a>
+            <a href="05_决策疲劳与完美主义/chapter5.html" class="chapter-card">
+                <div class="chapter-num">05</div>
+                <h3>决策疲劳与完美主义</h3>
+                <p>软件装4个版本、买衣服纠结几小时。"足够好"标准、决策时间盒、工具锁定清单。</p>
+                <div class="tags">
+                    <span class="tag">决策疲劳</span>
+                    <span class="tag">满意化原则</span>
+                    <span class="tag">时间盒</span>
+                </div>
+            </a>
+            <a href="06_敏感气质与自主性缺失/chapter6.html" class="chapter-card">
+                <div class="chapter-num">06</div>
+                <h3>敏感气质与自主性缺失</h3>
+                <p>高敏感 + 易受外界影响。区分感受与反应、物理边界、自主性小练习、注意力锚定。</p>
+                <div class="tags">
+                    <span class="tag">HSP</span>
+                    <span class="tag">自主性</span>
+                    <span class="tag">注意力边界</span>
+                </div>
+            </a>
+            <a href="07_与母亲的关系/chapter7.html" class="chapter-card">
+                <div class="chapter-num">07</div>
+                <h3>与母亲的关系</h3>
+                <p>本能反感、道理懂但现实反应隔阂。接纳本能反应、物理分离优先、结构化沟通。</p>
+                <div class="tags">
+                    <span class="tag">条件性厌恶</span>
+                    <span class="tag">物理分离</span>
+                    <span class="tag">结构化沟通</span>
+                </div>
+            </a>
+            <a href="08_负向思维与认知重构/chapter8.html" class="chapter-card">
+                <div class="chapter-num">08</div>
+                <h3>负向思维与认知重构</h3>
+                <p>总是先看到不好和危险的点。ABC认知重构、最坏—最好—最可能三栏思考、确定性反馈。</p>
+                <div class="tags">
+                    <span class="tag">ABC模型</span>
+                    <span class="tag">确认偏误</span>
+                    <span class="tag">认知重构</span>
+                </div>
+            </a>
+            <a href="09_生活系统重构/chapter9.html" class="chapter-card">
+                <div class="chapter-num">09</div>
+                <h3>生活系统重构</h3>
+                <p>把所有改变装进可持续运行的日常系统。任务三分法、时间结构、饮食睡眠、精力管理。</p>
+                <div class="tags">
+                    <span class="tag">任务三分法</span>
+                    <span class="tag">生活系统</span>
+                    <span class="tag">正反馈</span>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <div class="learning-path">
+        <h2>每一章的学习路径</h2>
+        <div class="path-steps">
+            <div class="path-step">理解道理<br><small>是什么</small></div>
+            <div class="path-arrow">→</div>
+            <div class="path-step">了解原因<br><small>为什么</small></div>
+            <div class="path-arrow">→</div>
+            <div class="path-step">实践方法<br><small>怎么做</small></div>
+        </div>
+    </div>
+</div>
+
+<div class="footer">
+    <p>与人交际问题 · 自我改变系统教程</p>
+</div>
+
+</body>
+</html>

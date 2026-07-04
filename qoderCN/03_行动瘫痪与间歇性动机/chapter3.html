@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第三章 · 行动瘫痪与间歇性动机</title>
+<style>
+:root{
+  --bg:#f7f9fc; --card:#ffffff; --ink:#1f2937; --muted:#6b7280;
+  --line:#e5e7eb; --brand:#2563eb; --brand-soft:#eff6ff;
+  --amber:#d97706; --amber-soft:#fef3c7; --green:#059669; --green-soft:#ecfdf5;
+  --rose:#e11d48; --rose-soft:#ffe4e6; --violet:#7c3aed; --violet-soft:#f5f3ff;
+  --shadow:0 1px 3px rgba(0,0,0,.06),0 8px 24px rgba(0,0,0,.04);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--ink);line-height:1.75;font-size:15px}
+.wrap{max-width:1180px;margin:0 auto;padding:28px 24px 80px}
+.topnav{display:flex;align-items:center;justify-content:space-between;padding:14px 20px;background:var(--card);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);margin-bottom:28px;position:sticky;top:14px;z-index:50}
+.topnav a{color:var(--brand);text-decoration:none;font-weight:600;font-size:14px}
+.topnav .crumb{color:var(--muted);font-size:13px}
+.topnav .crumb b{color:var(--ink)}
+.hero{background:linear-gradient(135deg,#eff6ff 0%,#f5f3ff 100%);border:1px solid var(--line);border-radius:18px;padding:34px 32px;margin-bottom:30px;box-shadow:var(--shadow)}
+.hero h1{font-size:26px;letter-spacing:.5px;margin-bottom:10px}
+.hero .sub{color:var(--muted);font-size:14px;max-width:760px}
+.hero .goal{margin-top:16px;display:inline-block;background:var(--brand);color:#fff;padding:8px 16px;border-radius:999px;font-size:13px}
+h2.sec{font-size:20px;margin:38px 0 16px;padding-left:14px;border-left:5px solid var(--brand)}
+h3.sub{font-size:16.5px;margin:24px 0 12px;color:#111827}
+p{margin:10px 0}
+ul,ol{margin:10px 0 10px 22px}
+li{margin:6px 0}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:18px 0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px 22px;box-shadow:var(--shadow)}
+.card.amber{background:var(--amber-soft);border-color:#fcd34d}
+.card.green{background:var(--green-soft);border-color:#a7f3d0}
+.card.rose{background:var(--rose-soft);border-color:#fecdd3}
+.card.violet{background:var(--violet-soft);border-color:#ddd6fe}
+.card h4{font-size:15px;margin-bottom:10px}
+table{width:100%;border-collapse:collapse;margin:14px 0;background:var(--card);border-radius:12px;overflow:hidden;box-shadow:var(--shadow)}
+th,td{padding:12px 14px;text-align:left;border-bottom:1px solid var(--line);font-size:14px;vertical-align:top}
+th{background:#f3f4f6;font-weight:600}
+tr:last-child td{border-bottom:none}
+.term{color:var(--brand);border-bottom:1px dashed var(--brand);cursor:help;position:relative}
+.term:hover{background:var(--brand-soft)}
+.tip{display:none;position:absolute;left:0;top:130%;width:280px;background:#111827;color:#fff;padding:12px 14px;border-radius:10px;font-size:13px;line-height:1.6;z-index:100;box-shadow:0 6px 20px rgba(0,0,0,.2)}
+.term:hover .tip,.term:focus .tip{display:block}
+.callout{border-left:5px solid var(--amber);background:var(--amber-soft);padding:16px 18px;border-radius:0 12px 12px 0;margin:18px 0}
+.callout.g{border-color:var(--green);background:var(--green-soft)}
+.callout.b{border-color:var(--brand);background:var(--brand-soft)}
+.callout.r{border-color:var(--rose);background:var(--rose-soft)}
+.action{background:linear-gradient(135deg,#ecfdf5,#eff6ff);border:1px solid #a7f3d0;border-radius:14px;padding:22px;margin:24px 0}
+.action h4{color:var(--green);margin-bottom:10px}
+.flow{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:16px 0}
+.flow .node{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:10px 14px;font-size:13px;box-shadow:var(--shadow)}
+.flow .node.bad{border-color:#fecdd3;background:var(--rose-soft)}
+.flow .node.good{border-color:#a7f3d0;background:var(--green-soft)}
+.flow .arr{color:var(--muted);font-weight:700}
+.svg-box{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;margin:18px 0;box-shadow:var(--shadow)}
+.pill{display:inline-block;background:var(--brand-soft);color:var(--brand);padding:3px 10px;border-radius:999px;font-size:12px;margin:2px}
+.checklist{list-style:none;margin-left:0}
+.checklist li{padding:10px 14px;background:var(--card);border:1px solid var(--line);border-radius:10px;margin:8px 0;box-shadow:var(--shadow)}
+.checklist li::before{content:"☐ ";color:var(--brand);font-weight:700}
+.foot{text-align:center;color:var(--muted);font-size:13px;margin-top:50px;padding-top:24px;border-top:1px solid var(--line)}
+@media(max-width:860px){.two-col{grid-template-columns:1fr}.topnav{position:static}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="topnav">
+    <a href="../index.html">← 返回主页</a>
+    <div class="crumb">教程 / <b>第三章 行动瘫痪与间歇性动机</b></div>
+    <a href="../04_原生家庭代际遗传/chapter4.html">第四章 →</a>
+  </div>
+
+  <div class="hero">
+    <h1>第三章 · 行动瘫痪与间歇性动机</h1>
+    <div class="sub">理解"睡前想明白、醒来又抗拒"的生理机制，学会在状态波动中抓住行动窗口，把间歇性动机变成可持续行动。</div>
+    <div class="goal">目标：理解状态依赖 → 固化想法 → 缩短反复周期</div>
+  </div>
+
+  <h2 class="sec">3.1 现象：两个自己的拉锯</h2>
+  <div class="callout">
+    "睡觉前会想明白，就是身体进入一种比较放松的状态时，就会很容易……但醒来后又会是另外一种状态。"
+  </div>
+  <p>这不是你独有的体验，而是大脑在不同生理状态下的"模式切换"。你可以把它理解为<b>两个自己</b>：</p>
+
+  <table>
+    <tr><th>状态</th><th>主导脑区</th><th>特征</th><th>你的体验</th></tr>
+    <tr><td><b>放松态</b><br>（睡前、散步、洗澡）</td><td>前额叶皮层</td><td>理性、计划、长远视角、情绪平静</td><td>"想清楚了，明天就打电话"</td></tr>
+    <tr><td><b>压力态</b><br>（白天、面对任务时）</td><td>杏仁核 + 边缘系统</td><td>警觉、威胁检测、短期视角、情绪驱动</td><td>"不想打、难受、抗拒"</td></tr>
+  </table>
+  <p>两个状态下，你的"决策系统"用的是不同的算法。放松态下你觉得显而易见的事，压力态下会变得难以启动。<b>这不是意志问题，是生理状态决定了哪个脑区在掌权。</b></p>
+
+  <h2 class="sec">3.2 成因：为什么动机是"间歇性"的</h2>
+
+  <div class="two-col">
+    <div class="card green">
+      <h4>3.2.1 状态依赖性决策</h4>
+      <p>你的行动力高度依赖当下生理状态。背后是<b>前额叶与杏仁核的力量对比</b>随状态变化：</p>
+      <ul>
+        <li>睡眠充足、血糖稳定、压力低 → 前额叶强 → 能规划</li>
+        <li>睡眠不足、疲劳、压力高 → 杏仁核强 → 回避</li>
+      </ul>
+      <p>你的核心问题不是"没有动机"，而是<b>动机只在特定状态下出现，而那个状态不持久</b>。心脏术后恢复期，生理储备本就偏低。</p>
+    </div>
+    <div class="card amber">
+      <h4>3.2.2 动机的"信用卡模式"</h4>
+      <p>你的动机像信用卡：睡前刷了一笔"决心"，但醒来"额度"已被焦虑和疲劳清零。</p>
+      <p>你每晚都在"下决心"，但决心没有转化为行动的<b>固化结构</b>，所以每次都从零开始。</p>
+    </div>
+  </div>
+
+  <div class="two-col">
+    <div class="card rose">
+      <h4>3.2.3 状态差时的"行动瘫痪"</h4>
+      <p>"状态不好的时候更是无法行动。"</p>
+      <p>前额叶是全身最耗能脑区，状态差时它率先下线，杏仁核接管。<b>状态差时不行动，不是"又不行了"，是生理现实。</b></p>
+    </div>
+    <div class="card violet">
+      <h4>3.2.4 "不得不"才动的陷阱</h4>
+      <p>教务处拖延半学期、空调拖到忍无可忍才打电话——都靠"外部压力"驱动。</p>
+      <p>问题是：靠外部压力驱动意味着你把控制权交给了环境，自己始终是被动的。</p>
+    </div>
+  </div>
+
+  <h2 class="sec">3.3 机制：动机的潮汐与行动的固化</h2>
+  <div class="svg-box">
+    <svg viewBox="0 0 680 300" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+      <!-- 放松态 -->
+      <rect x="30" y="20" width="200" height="50" rx="10" fill="#ecfdf5" stroke="#6ee7b7"/>
+      <text x="130" y="50" font-size="13" fill="#065f46" text-anchor="middle" font-weight="bold">放松态（睡前）</text>
+      <text x="130" y="230" font-size="11" fill="#6b7280" text-anchor="middle">前额叶在线 → 想清楚、有决心</text>
+
+      <!-- 箭头 -->
+      <path d="M 130 70 L 130 105" stroke="#6b7280" stroke-width="2" marker-end="url(#b1)"/>
+      <text x="145" y="92" font-size="11" fill="#e11d48">没有固化</text>
+
+      <!-- 决心消散 -->
+      <rect x="30" y="110" width="200" height="40" rx="10" fill="#fee2e2" stroke="#fca5a5"/>
+      <text x="130" y="135" font-size="12" fill="#991b1b" text-anchor="middle">决心随状态消失</text>
+
+      <path d="M 130 150 L 130 185" stroke="#6b7280" stroke-width="2" marker-end="url(#b1)"/>
+
+      <!-- 醒来 -->
+      <rect x="30" y="190" width="200" height="50" rx="10" fill="#fef3c7" stroke="#fcd34d"/>
+      <text x="130" y="210" font-size="13" fill="#92400e" text-anchor="middle" font-weight="bold">醒来（压力态）</text>
+
+      <!-- 右侧循环 -->
+      <rect x="370" y="60" width="180" height="45" rx="10" fill="#fee2e2" stroke="#fca5a5"/>
+      <text x="460" y="88" font-size="12" fill="#991b1b" text-anchor="middle">杏仁核激活→焦虑、抗拒</text>
+
+      <path d="M 230 215 L 340 215 L 340 85 L 365 85" stroke="#6b7280" stroke-width="2" fill="none" marker-end="url(#b1)"/>
+
+      <path d="M 460 105 L 460 135" stroke="#6b7280" stroke-width="2" marker-end="url(#b1)"/>
+
+      <rect x="370" y="140" width="180" height="45" rx="10" fill="#fee2e2" stroke="#fca5a5"/>
+      <text x="460" y="168" font-size="12" fill="#991b1b" text-anchor="middle">决心已消散→无法启动</text>
+
+      <path d="M 460 185 L 460 215" stroke="#6b7280" stroke-width="2" marker-end="url(#b1)"/>
+
+      <rect x="370" y="220" width="180" height="45" rx="10" fill="#fee2e2" stroke="#fca5a5"/>
+      <text x="460" y="248" font-size="12" fill="#991b1b" text-anchor="middle">问题积累→压力更大→更难</text>
+
+      <!-- 循环箭头 -->
+      <path d="M 370 242 L 280 242 L 280 90 L 250 90" stroke="#e11d48" stroke-width="2" fill="none" marker-end="url(#b1)" stroke-dasharray="5 4" opacity="0.6"/>
+
+      <defs><marker id="b1" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#6b7280"/></marker></defs>
+    </svg>
+  </div>
+
+  <div class="callout r">
+    <b>关键洞察：</b>问题不在于"想得不够清楚"，而在于<b>清楚的想法没有在产生的瞬间被固化成行动或行动结构</b>。想法是气体，会挥发；要把它变成固体（写下来、预约好、设置触发器），才能跨状态保留。
+  </div>
+
+  <h2 class="sec">3.4 方法：五个工具把间歇动机变持续行动</h2>
+
+  <div class="two-col">
+    <div class="card green">
+      <h4>工具1：抓住"清醒时刻"立刻固化</h4>
+      <p>睡前或任何你想清楚的时刻，<b>不要只"想"，要立刻做一个固化动作</b>：</p>
+      <ul>
+        <li><b>写下</b>：手机备忘录写一句话行动指令</li>
+        <li><b>录音</b>：给自己录30秒语音，明天一早听</li>
+        <li><b>预约</b>：手机设提醒/日历，到点就响</li>
+        <li><b>预发</b>：微信草稿写好，早上只需点发送</li>
+      </ul>
+      <p><b>原则：想法产生的5分钟内必须固化，否则它会挥发。</b></p>
+    </div>
+    <div class="card violet">
+      <h4>工具2：行动门槛降到极低（2分钟法则）</h4>
+      <p>状态差时，任何"大任务"都会触发回避。解法是把任务切到<b>2分钟内能完成</b>：</p>
+      <ul>
+        <li style="color:#991b1b">❌ "解决空调问题" → 大任务 → 回避</li>
+        <li style="color:#065f46">✅ "打开手机通讯录找到公租房电话" → 2分钟 → 能做</li>
+      </ul>
+      <p><b>核心：不要求完成任务，只要求"开始"。</b>开始之后，惯性往往带你走更远。</p>
+    </div>
+  </div>
+
+  <div class="two-col">
+    <div class="card amber">
+      <h4>工具3：状态管理优先于任务管理</h4>
+      <p><b>你的问题不是时间管理，是精力管理。</b>状态好时1小时能做完的事，状态差时3小时也做不动。</p>
+      <ul>
+        <li>识别自己的高效时段（你是上午精力好时）</li>
+        <li>把"认为要做"的事放在高效时段</li>
+        <li>状态差时降低期待：只做最小维持</li>
+        <li><b>睡眠和饮食是状态管理的基础</b></li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>工具4："如果—那么"预设计划</h4>
+      <p><span class="term">执行意图<span class="tip">Gollwitzer的研究：提前制定"如果X，那么Y"的计划，行动成功率提高2-3倍。因为把"决策"提前做了，到时只需执行，不再消耗当下意志力。</span></span>：</p>
+      <ul>
+        <li><b>如果</b>醒来感到抗拒，<b>那么</b>只做一件事：点发送草稿</li>
+        <li><b>如果</b>状态很差不想动，<b>那么</b>允许今天只做最小一步</li>
+        <li><b>如果</b>想到该做的事，<b>那么</b>5秒内打开手机记录</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="action">
+    <h4>工具5：允许反复，但缩短反复周期</h4>
+    <div class="callout" style="margin:0 0 10px 0">
+      "也有可能反复，所以我需要更加清晰、可执行的方式。"
+    </div>
+    <p>你的自我认知完全正确。改变是螺旋的，不是直线。<b>反复不是失败，是规律。</b></p>
+    <p>关键不是"不反复"，而是<b>缩短反复的周期</b>：</p>
+    <div class="flow">
+      <span class="node bad">以前拖半学期</span><span class="arr">→</span>
+      <span class="node">现在拖一周</span><span class="arr">→</span>
+      <span class="node good">以后拖一天</span>
+    </div>
+    <p>每次反复后，不问"又退回去了"，而问<b>"这次比上次快了多少"</b>。把"缩短反复周期"本身当作进步指标。</p>
+  </div>
+
+  <h2 class="sec">3.5 本章实践清单</h2>
+  <div class="callout b"><b>选1-2个，本周做到。</b></div>
+  <ul class="checklist">
+    <li>今晚睡前如果有"想清楚"的时刻，立刻在手机写一条行动指令并设提醒</li>
+    <li>给自己写2-3条"如果—那么"计划，贴在桌上/存手机</li>
+    <li>记录自己一天中的"高效时段"和"低能时段"，观察一周</li>
+    <li>下次状态差不想动时，试一次2分钟法则（只做最小一步）</li>
+    <li>往"正反馈记录"加一条：记录一次"缩短了反复周期"的经历</li>
+  </ul>
+
+  <h2 class="sec">3.6 小结</h2>
+  <div class="callout b">
+    <b>行动瘫痪的本质：</b>动机只在特定生理状态下出现，而那个状态不持久；想法没有在产生时被固化，所以随状态挥发。
+  </div>
+  <p>打破它不需要"更强的意志力"，只需要：</p>
+  <div class="flow">
+    <span class="node good">想法瞬间固化</span><span class="arr">+</span>
+    <span class="node good">门槛降到2分钟</span><span class="arr">+</span>
+    <span class="node good">状态管理优先</span><span class="arr">+</span>
+    <span class="node good">如果—那么计划</span><span class="arr">+</span>
+    <span class="node good">缩短反复周期</span>
+  </div>
+  <div class="callout g">
+    <b>你不是没有决心，你是没有把决心"存"下来的结构。从今天起，你在建这个结构。</b>
+  </div>
+
+  <div class="foot">
+    下一章：<a href="../04_原生家庭代际遗传/chapter4.html" style="color:var(--brand)">第四章 原生家庭代际遗传 →</a>
+  </div>
+
+</div>
+</body>
+</html>

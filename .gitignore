@@ -1,0 +1,53 @@
+# 忽略 .workbuddy 目录（本地配置）
+.workbuddy/
+
+# 忽略 .claude 目录（如果存在）
+.claude/
+
+# 忽略 .mimocode 目录（如果存在）
+.mimocode/
+
+# 忽略 .codex 目录（如果存在）
+.codex/
+
+# 忽略 .agents 目录（如果存在）
+.agents/
+
+# 忽略 node_modules 目录
+node_modules/
+
+# 忽略 .env 文件
+.env
+
+# 忽略 .env.local 文件
+.env.local
+
+# 忽略 .env.development.local 文件
+.env.development.local
+
+# 忽略 .env.test.local 文件
+.env.test.local
+
+# 忽略 .env.production.local 文件
+.env.production.local
+
+# 忽略 npm-debug.log*
+npm-debug.log*
+
+# 忽略 yarn-debug.log*
+yarn-debug.log*
+
+# 忽略 yarn-error.log*
+yarn-error.log*
+
+# 忽略 .DS_Store 文件（macOS）
+.DS_Store
+
+# 忽略 Thumbs.db 文件（Windows）
+Thumbs.db
+
+# 忽略 Desktop.ini 文件（Windows）
+Desktop.ini
+
+# 忽略 .git 文件（如果存在）
+.git/

@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第五章 · 决策疲劳与完美主义</title>
+<style>
+:root{--bg:#f7f9fc;--card:#fff;--ink:#1f2937;--muted:#6b7280;--line:#e5e7eb;--brand:#2563eb;--brand-soft:#eff6ff;--amber:#d97706;--amber-soft:#fef3c7;--green:#059669;--green-soft:#ecfdf5;--rose:#e11d48;--rose-soft:#ffe4e6;--violet:#7c3aed;--violet-soft:#f5f3ff;--shadow:0 1px 3px rgba(0,0,0,.06),0 8px 24px rgba(0,0,0,.04)}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--ink);line-height:1.75;font-size:15px}
+.wrap{max-width:1180px;margin:0 auto;padding:28px 24px 80px}
+.topnav{display:flex;align-items:center;justify-content:space-between;padding:14px 20px;background:var(--card);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);margin-bottom:28px;position:sticky;top:14px;z-index:50}
+.topnav a{color:var(--brand);text-decoration:none;font-weight:600;font-size:14px}
+.topnav .crumb{color:var(--muted);font-size:13px}.topnav .crumb b{color:var(--ink)}
+.hero{background:linear-gradient(135deg,#eff6ff 0%,#f5f3ff 100%);border:1px solid var(--line);border-radius:18px;padding:34px 32px;margin-bottom:30px;box-shadow:var(--shadow)}
+.hero h1{font-size:26px;margin-bottom:10px}.hero .sub{color:var(--muted);font-size:14px;max-width:760px}
+.hero .goal{margin-top:16px;display:inline-block;background:var(--brand);color:#fff;padding:8px 16px;border-radius:999px;font-size:13px}
+h2.sec{font-size:20px;margin:38px 0 16px;padding-left:14px;border-left:5px solid var(--brand)}
+p{margin:10px 0}ul,ol{margin:10px 0 10px 22px}li{margin:6px 0}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:18px 0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px 22px;box-shadow:var(--shadow)}
+.card.amber{background:var(--amber-soft);border-color:#fcd34d}.card.green{background:var(--green-soft);border-color:#a7f3d0}.card.rose{background:var(--rose-soft);border-color:#fecdd3}.card.violet{background:var(--violet-soft);border-color:#ddd6fe}
+.card h4{font-size:15px;margin-bottom:10px}
+table{width:100%;border-collapse:collapse;margin:14px 0;background:var(--card);border-radius:12px;overflow:hidden;box-shadow:var(--shadow)}
+th,td{padding:12px 14px;text-align:left;border-bottom:1px solid var(--line);font-size:14px;vertical-align:top}
+th{background:#f3f4f6;font-weight:600}tr:last-child td{border-bottom:none}
+.term{color:var(--brand);border-bottom:1px dashed var(--brand);cursor:help;position:relative}.term:hover{background:var(--brand-soft)}
+.tip{display:none;position:absolute;left:0;top:130%;width:280px;background:#111827;color:#fff;padding:12px 14px;border-radius:10px;font-size:13px;line-height:1.6;z-index:100;box-shadow:0 6px 20px rgba(0,0,0,.2)}
+.term:hover .tip,.term:focus .tip{display:block}
+.callout{border-left:5px solid var(--amber);background:var(--amber-soft);padding:16px 18px;border-radius:0 12px 12px 0;margin:18px 0}
+.callout.g{border-color:var(--green);background:var(--green-soft)}.callout.b{border-color:var(--brand);background:var(--brand-soft)}.callout.r{border-color:var(--rose);background:var(--rose-soft)}
+.action{background:linear-gradient(135deg,#ecfdf5,#eff6ff);border:1px solid #a7f3d0;border-radius:14px;padding:22px;margin:24px 0}.action h4{color:var(--green);margin-bottom:10px}
+.flow{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:16px 0}.flow .node{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:10px 14px;font-size:13px;box-shadow:var(--shadow)}.flow .node.bad{border-color:#fecdd3;background:var(--rose-soft)}.flow .node.good{border-color:#a7f3d0;background:var(--green-soft)}.flow .arr{color:var(--muted);font-weight:700}
+.svg-box{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;margin:18px 0;box-shadow:var(--shadow)}
+.checklist{list-style:none;margin-left:0}.checklist li{padding:10px 14px;background:var(--card);border:1px solid var(--line);border-radius:10px;margin:8px 0;box-shadow:var(--shadow)}.checklist li::before{content:"☐ ";color:var(--brand);font-weight:700}
+.foot{text-align:center;color:var(--muted);font-size:13px;margin-top:50px;padding-top:24px;border-top:1px solid var(--line)}
+@media(max-width:860px){.two-col{grid-template-columns:1fr}.topnav{position:static}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="topnav">
+    <a href="../index.html">← 返回主页</a>
+    <div class="crumb">教程 / <b>第五章 决策疲劳与完美主义</b></div>
+    <a href="../06_敏感气质与自主性缺失/chapter6.html">第六章 →</a>
+  </div>
+  <div class="hero">
+    <h1>第五章 · 决策疲劳与完美主义</h1>
+    <div class="sub">理解"折腾工具/购物纠结"背后的完美主义与决策消耗机制，用"足够好"标准和时间盒夺回精力。核心案例：买衣服纠结几小时、Edge浏览器装4个版本、AI编程软件挨个学。</div>
+    <div class="goal">目标：识别精力黑洞 → 用足够好标准 → 锁定工具</div>
+  </div>
+
+  <h2 class="sec">5.1 现象：被"折腾"掏空的精力</h2>
+  <div class="callout">"我很多时候会花时间死磕一些'细节'……每天两三个小时，陷在淘宝里筛选，选便宜的，又害怕质量不好，选贵的，又觉得贵……然后这样就很累。"</div>
+  <div class="callout">"下载各种软件，熬夜安装，测试功能……claudecode找图形界面，找到后又想着Mimocode是不是有类似的……这些让我每天消耗了许多时间和精力。"</div>
+  <p>这不是"热爱折腾"，这是一种<b>精力黑洞</b>。每一次比较、每一次"再找一个更好的"，都在消耗你的执行功能，而你浑然不觉——直到精疲力竭。</p>
+
+  <h2 class="sec">5.2 成因：为什么你会陷入无限比较</h2>
+  <div class="two-col">
+    <div class="card rose">
+      <h4>5.2.1 完美主义 + 最大化倾向</h4>
+      <p>心理学区分两种决策者：</p>
+      <ul>
+        <li><span class="term">最大化者<span class="tip">Maximizer：必须找到最优解，不愿接受"足够好"。研究表明最大化者最终选择的满意度反而更低，因为总在想"是不是还有更好的"。</span></span>：必须找最优解</li>
+        <li><span class="term">满意化者<span class="tip">Satisficer：有明确标准，达到标准就定，不再继续找。满意度更高，决策更快。</span></span>：达标就定</li>
+      </ul>
+      <p>你是典型的最大化者。追求的不是"能用"，而是"最好的"。</p>
+    </div>
+    <div class="card amber">
+      <h4>5.2.2 控制感需求</h4>
+      <p>"总是对手机软件功能有自己的想法，想自己做成最顺手的。"</p>
+      <p>折腾工具的本质是<b>追求完美控制感</b>。但软件是别人设计的，永远不可能100%符合你的想象，于是陷入"找—不满—再找"的死循环。</p>
+    </div>
+  </div>
+  <div class="two-col">
+    <div class="card violet">
+      <h4>5.2.3 原生家庭的节俭习惯</h4>
+      <p>"选便宜的，又害怕质量不好，选贵的，又觉得贵。"</p>
+      <p>这是母亲"节俭克己"程序在你身上的运行。你既要"性价比最高"（节俭），又要"质量最好"（完美），两个标准互相矛盾，永远无法同时满足。</p>
+    </div>
+    <div class="card green">
+      <h4>5.2.4 不确定性的不耐受 + 逃避信号</h4>
+      <p>你无法忍受"选了之后发现不好"，所以用"无限比较"推迟决定。</p>
+      <p><b>重要发现：</b>很多时候"折腾工具"是潜意识在<b>逃避真正该做的事</b>。投简历太焦虑？那就去"研究AI工具"——看起来在"学习"，实际在回避。</p>
+    </div>
+  </div>
+
+  <h2 class="sec">5.3 机制：决策疲劳如何掏空你</h2>
+  <div class="svg-box">
+    <svg viewBox="0 0 680 200" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+      <text x="20" y="25" font-size="13" fill="#6b7280">决策疲劳机制：每次比较消耗一份前额叶资源</text>
+      <rect x="30" y="50" width="120" height="40" rx="8" fill="#ecfdf5" stroke="#6ee7b7"/>
+      <text x="90" y="75" font-size="12" fill="#065f46" text-anchor="middle">前额叶满电</text>
+      <path d="M 150 70 L 185 70" stroke="#6b7280" stroke-width="2" marker-end="url(#d1)"/>
+      <rect x="190" y="50" width="100" height="40" rx="8" fill="#fef3c7" stroke="#fcd34d"/>
+      <text x="240" y="75" font-size="11" fill="#92400e" text-anchor="middle">比较1次</text>
+      <path d="M 290 70 L 325 70" stroke="#6b7280" stroke-width="2" marker-end="url(#d1)"/>
+      <rect x="330" y="50" width="100" height="40" rx="8" fill="#fef3c7" stroke="#fcd34d"/>
+      <text x="380" y="75" font-size="11" fill="#92400e" text-anchor="middle">比较10次</text>
+      <path d="M 430 70 L 465 70" stroke="#6b7280" stroke-width="2" marker-end="url(#d1)"/>
+      <rect x="470" y="50" width="100" height="40" rx="8" fill="#fee2e2" stroke="#fca5a5"/>
+      <text x="520" y="75" font-size="11" fill="#991b1b" text-anchor="middle">比较30次</text>
+      <path d="M 570 70 L 605 70" stroke="#6b7280" stroke-width="2" marker-end="url(#d1)"/>
+      <rect x="610" y="50" width="60" height="40" rx="8" fill="#fecdd3" stroke="#fda4af"/>
+      <text x="640" y="75" font-size="11" fill="#9f1239" text-anchor="middle">瘫痪</text>
+      <!-- 电量条 -->
+      <rect x="30" y="110" width="640" height="20" rx="4" fill="#ecfdf5" stroke="#6ee7b7"/>
+      <rect x="30" y="110" width="640" height="20" rx="4" fill="url(#grad)" opacity="0.7"/>
+      <text x="350" y="155" font-size="11" fill="#6b7280" text-anchor="middle">← 满电 ─────────── 电量耗尽 →（决策疲劳）</text>
+      <defs>
+        <linearGradient id="grad" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%" stop-color="#10b981"/><stop offset="50%" stop-color="#fcd34d"/><stop offset="100%" stop-color="#ef4444"/>
+        </linearGradient>
+        <marker id="d1" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#6b7280"/></marker>
+      </defs>
+    </svg>
+  </div>
+  <div class="callout r">
+    <b>"最优解"幻觉：</b>选项是无限的、信息是不完全的、"最优"是动态的。<b>追求最优解是一个无底洞</b>，它保证你永远不满意、永远在找。
+  </div>
+
+  <h2 class="sec">5.4 方法：五个工具夺回精力</h2>
+  <div class="two-col">
+    <div class="card green">
+      <h4>工具1："足够好"标准（满意化原则）</h4>
+      <p>把"我要找最好的"替换为"我要找<b>达到我标准的第一个</b>"。</p>
+      <p><b>操作：</b>开始找之前，先定3条硬标准。达到就定，不再看其他。</p>
+      <ul>
+        <li>买衣服：①价格X内 ②棉质 ③评价4.5+ → 第一个满足就买</li>
+        <li>选软件：①有核心功能 ②免费/可接受 ③近期有更新 → 第一个满足就用</li>
+      </ul>
+      <p><b>关键：定标准在前，找在后。</b></p>
+    </div>
+    <div class="card violet">
+      <h4>工具2：决策时间盒</h4>
+      <p>给每个决策设定时间上限，到点必须定。</p>
+      <ul>
+        <li>买衣服：最多30分钟</li>
+        <li>选软件：最多1小时</li>
+        <li>折腾功能：最多2小时，到点停止</li>
+      </ul>
+      <p>时间盒把"无限比较"变成"有限比较"，强制在资源耗尽前做决定。</p>
+    </div>
+  </div>
+  <div class="two-col">
+    <div class="card amber">
+      <h4>工具3：工具锁定清单</h4>
+      <p>每个领域只留一个工具，锁死，不再换：</p>
+      <table style="font-size:13px">
+        <tr><th>领域</th><th>锁定工具</th></tr>
+        <tr><td>浏览器</td><td>Edge原版（不再折腾第三方）</td></tr>
+        <tr><td>AI编程</td><td>当前在用的（不再挨个试）</td></tr>
+        <tr><td>侧边手势</td><td>当前在用的（不再找"更完美"的）</td></tr>
+      </table>
+      <p><b>规则：</b>只有工具<b>完全不能用</b>时才换。"不够顺手"不是换的理由。</p>
+    </div>
+    <div class="card">
+      <h4>工具4 + 5：诚实归类 + 识别逃避</h4>
+      <p><b>工具4：</b>把"折腾"划入"想做"（娱乐）而非"应做"。安排在晚上，有时间上限。不要用折腾冒充"学习进步"。</p>
+      <p><b>工具5：</b>下次开始折腾时，问自己：</p>
+      <div class="callout r" style="margin:8px 0">"我现在是不是在回避什么？"</div>
+      <p>如果是，面对那个"什么"——哪怕只做最小一步。折腾的冲动往往会减弱，因为它本是焦虑的副产品。</p>
+    </div>
+  </div>
+
+  <h2 class="sec">5.5 本章实践清单</h2>
+  <div class="callout b"><b>选1-2个，本周做到。</b></div>
+  <ul class="checklist">
+    <li>列一份"工具锁定清单"，每个领域锁一个工具</li>
+    <li>下次购物前，先定3条硬标准，达标即买</li>
+    <li>给"折腾工具/软件"设时间盒（如最多1小时）</li>
+    <li>下次开始折腾时，问自己"我是不是在回避什么？"</li>
+    <li>把"折腾工具"时间移到晚上"想做"时段，有时间上限</li>
+    <li>往"正反馈记录"加一条：记录一次"用足够好标准快速决定"的经历</li>
+  </ul>
+
+  <h2 class="sec">5.6 小结</h2>
+  <div class="callout b"><b>决策疲劳的本质：</b>最大化倾向 + 控制感需求 + 节俭习惯 + 不确定的不耐受 = 无限比较 = 精力黑洞。</div>
+  <div class="flow">
+    <span class="node good">足够好标准</span><span class="arr">+</span>
+    <span class="node good">决策时间盒</span><span class="arr">+</span>
+    <span class="node good">工具锁定</span><span class="arr">+</span>
+    <span class="node good">诚实归类</span><span class="arr">+</span>
+    <span class="node good">识别逃避</span>
+  </div>
+  <div class="callout g"><b>你不是热爱折腾，你是在用折腾填补"不确定"带来的焦虑。但真正的解药不是更多比较，而是"足够好"的勇气。</b></div>
+
+  <div class="foot">下一章：<a href="../06_敏感气质与自主性缺失/chapter6.html" style="color:var(--brand)">第六章 敏感气质与自主性缺失 →</a></div>
+</div>
+</body>
+</html>

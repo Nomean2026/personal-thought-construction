@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第五章：敏感性人格与边界</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --primary: #A29BFE;
+            --primary-light: #F0EDFF;
+            --accent: #FD79A8;
+            --bg: #FAFBFE;
+            --card-bg: #FFFFFF;
+            --text: #2D3436;
+            --text-light: #636E72;
+            --border: #E8ECF1;
+            --success: #00B894;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            background: var(--bg); color: var(--text); line-height: 1.9;
+        }
+        .hero {
+            background: linear-gradient(135deg, #a29bfe 0%, #6c5ce7 100%);
+            color: white; padding: 60px 40px; position: relative;
+        }
+        .hero .back-link {
+            position: absolute; top: 20px; left: 20px;
+            color: rgba(255,255,255,0.8); text-decoration: none; font-size: 0.9em;
+        }
+        .hero .back-link:hover { color: white; }
+        .hero h1 { font-size: 2.4em; font-weight: 700; margin-bottom: 12px; }
+        .hero p { font-size: 1.15em; opacity: 0.9; }
+        .container { max-width: 1100px; margin: 0 auto; padding: 40px 20px; }
+        h2 { font-size: 1.8em; color: var(--primary); margin: 48px 0 24px; padding-bottom: 12px; border-bottom: 2px solid var(--primary-light); }
+        h3 { font-size: 1.3em; color: var(--text); margin: 32px 0 16px; }
+        h4 { font-size: 1.1em; color: var(--primary); margin: 24px 0 12px; }
+        p { margin-bottom: 14px; }
+        .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin: 20px 0; }
+        .card { background: var(--card-bg); border-radius: 12px; padding: 24px; box-shadow: 0 2px 12px rgba(0,0,0,0.05); }
+        .card.highlight { border-left: 4px solid var(--primary); }
+        .card.success { border-left: 4px solid var(--success); }
+        table { width: 100%; border-collapse: collapse; margin: 16px 0; background: var(--card-bg); border-radius: 12px; overflow: hidden; box-shadow: 0 2px 12px rgba(0,0,0,0.05); }
+        th { background: var(--primary); color: white; padding: 14px 16px; text-align: left; font-weight: 600; }
+        td { padding: 12px 16px; border-bottom: 1px solid var(--border); }
+        tr:last-child td { border-bottom: none; }
+        tr:hover td { background: var(--primary-light); }
+        .tooltip {
+            position: relative; border-bottom: 1px dashed var(--primary); cursor: help; font-weight: 500;
+        }
+        .tooltip .tip-text {
+            visibility: hidden; background: #2D3436; color: white; padding: 10px 14px;
+            border-radius: 8px; font-size: 0.85em; line-height: 1.5; position: absolute;
+            bottom: 130%; left: 50%; transform: translateX(-50%); width: 280px;
+            text-align: center; opacity: 0; transition: opacity 0.3s; z-index: 100; font-weight: 400;
+        }
+        .tooltip:hover .tip-text { visibility: visible; opacity: 1; }
+        .practice-box {
+            background: linear-gradient(135deg, #F0EDFF, #E8E4FF); border-radius: 12px;
+            padding: 24px; margin: 20px 0; border: 1px solid #D0C8FF;
+        }
+        .practice-box h4 { color: #5F3DC4; margin-bottom: 12px; }
+        .practice-box ol, .practice-box ul { padding-left: 20px; }
+        .practice-box li { margin-bottom: 8px; }
+        .quote {
+            background: var(--primary-light); border-left: 4px solid var(--primary);
+            padding: 16px 20px; margin: 16px 0; border-radius: 0 8px 8px 0;
+            font-style: italic; color: var(--text);
+        }
+        .nav-links {
+            display: flex; justify-content: space-between; margin-top: 60px;
+            padding-top: 30px; border-top: 1px solid var(--border);
+        }
+        .nav-links a {
+            color: var(--primary); text-decoration: none; padding: 10px 20px;
+            border-radius: 8px; transition: background 0.3s;
+        }
+        .nav-links a:hover { background: var(--primary-light); }
+        .does-grid {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 16px 0;
+        }
+        .does-item {
+            background: var(--card-bg); border-radius: 12px; padding: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04); border-left: 4px solid var(--primary);
+        }
+        .does-item .letter {
+            font-size: 2em; font-weight: 800; color: var(--primary); opacity: 0.3;
+        }
+        .does-item strong { display: block; margin-bottom: 4px; }
+        .does-item span { font-size: 0.9em; color: var(--text-light); }
+        .mindfulness-demo {
+            background: var(--card-bg); border-radius: 12px; padding: 30px;
+            text-align: center; box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+        }
+        .breath-circle {
+            width: 120px; height: 120px; border-radius: 50%;
+            background: linear-gradient(135deg, #a29bfe, #6c5ce7);
+            margin: 0 auto 16px; display: flex; align-items: center; justify-content: center;
+            color: white; font-size: 1.2em; font-weight: 600;
+            animation: breathe 8s ease-in-out infinite;
+        }
+        @keyframes breathe {
+            0%, 100% { transform: scale(1); }
+            25% { transform: scale(1.2); }
+            50% { transform: scale(1.2); }
+            75% { transform: scale(1); }
+        }
+        .anchor-box {
+            background: var(--card-bg); border-radius: 12px; padding: 20px;
+            margin: 12px 0; box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+            border: 2px dashed var(--primary);
+        }
+        @media (max-width: 768px) {
+            .two-col, .does-grid { grid-template-columns: 1fr; }
+            .hero h1 { font-size: 1.8em; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="hero">
+    <a href="../index.html" class="back-link">← 返回总览</a>
+    <h1>第五章：敏感性人格与边界</h1>
+    <p>将敏感从负担转化为优势</p>
+</div>
+
+<div class="container">
+
+    <h2>引言</h2>
+    <p>你提到"我属于比较敏感的气质，容易受外界环境和他人影响"。在图书馆时，别人过来你会想"人家要不要坐"；用语音输入时，妈妈发消息过来你就"突然不想弄了，感觉被打扰"。</p>
+    <p>这种敏感性让你容易被外界干扰，但也是一种天赋。</p>
+
+    <h2>第一节：高敏感性人格（HSP）研究</h2>
+
+    <h3>1.1 什么是高敏感性人格？</h3>
+    <p>心理学家 <span class="tooltip">Elaine Aron<span class="tip-text">Elaine Aron（1944-），美国心理学家，高敏感性人格（HSP）研究的开创者。她在1990年代提出了HSP概念，指出约15-20%的人群具有高度敏感的神经系统。</span></span>在1990年代提出了<span class="tooltip">高敏感性人格（HSP）<span class="tip-text">高敏感性人格（Highly Sensitive Person）：一种先天的气质特征，约15-20%的人群具有。特征包括：对环境刺激高度敏感、容易被过度刺激、深思熟虑、情感丰富、有强烈的同理心。这不是缺陷，而是一种不同的神经处理方式。</span></span>的概念。</p>
+
+    <h4>HSP 的四个核心特征（DOES）</h4>
+    <div class="does-grid">
+        <div class="does-item">
+            <div class="letter">D</div>
+            <strong>Depth of Processing</strong>
+            <span>深度加工信息——你会反复思考一个问题，看到别人看不到的细节。</span>
+        </div>
+        <div class="does-item">
+            <div class="letter">O</div>
+            <strong>Overstimulation</strong>
+            <span>容易过度刺激——图书馆别人过来就觉得被打扰，需要更多时间恢复。</span>
+        </div>
+        <div class="does-item">
+            <div class="letter">E</div>
+            <strong>Emotional Reactivity</strong>
+            <span>情绪反应强烈——对母亲的言行反应强烈，情感体验深刻。</span>
+        </div>
+        <div class="does-item">
+            <div class="letter">S</div>
+            <strong>Sensing Subtleties</strong>
+            <span>感知细微差异——能察觉到空调的怪味、环境的变化、他人的情绪。</span>
+        </div>
+    </div>
+
+    <h3>1.2 HSP 的生理基础</h3>
+    <p>HSP 不是"想太多"或"矫情"，而是有明确的生理基础：</p>
+
+    <div class="two-col">
+        <div class="card">
+            <h4>杏仁核活跃度更高</h4>
+            <p>杏仁核是大脑的"警报系统"。HSP 的杏仁核对刺激的反应更强烈。同样的环境刺激，HSP 会感受到更多。</p>
+        </div>
+        <div class="card">
+            <h4>镜像神经元更活跃</h4>
+            <p>镜像神经元让我们能"感受"他人的情绪。HSP 的镜像神经元更活跃，所以你更容易被他人的情绪影响。</p>
+        </div>
+        <div class="card">
+            <h4>多巴胺系统更敏感</h4>
+            <p>HSP 对奖励和惩罚的反应都更强烈。成功时更开心，失败时更痛苦。</p>
+        </div>
+        <div class="card">
+            <h4>优势与挑战并存</h4>
+            <p>敏感性带来了深度思考、同理心、创造力等优势，但也带来了容易过载的挑战。</p>
+        </div>
+    </div>
+
+    <h3>1.3 HSP 的优势</h3>
+    <div class="card success">
+        <h4>敏感性不是缺陷，而是一种特质</h4>
+        <ul style="padding-left: 20px;">
+            <li><strong>深度思考能力</strong>：你能看到别人看不到的细节</li>
+            <li><strong>同理心</strong>：你能更好地理解他人的感受</li>
+            <li><strong>创造力</strong>：敏感的人往往更有创造力</li>
+            <li><strong>直觉</strong>：你能更准确地感知环境变化</li>
+            <li><strong>审美能力</strong>：你对美有更敏锐的感知</li>
+        </ul>
+    </div>
+
+    <h2>第二节：边界感的建立</h2>
+
+    <h3>2.1 物理边界：个人空间的需求</h3>
+    <p>HSP 通常需要更多的个人空间。这不是"孤僻"，而是"充电"。</p>
+
+    <div class="two-col">
+        <div class="card">
+            <h4>你的情况</h4>
+            <ul style="padding-left: 20px;">
+                <li>图书馆包占座：你需要物理空间来保护注意力</li>
+                <li>被打扰后不想继续：这是过度刺激的表现</li>
+                <li>妈妈发消息就烦躁：你的专注空间被侵入了</li>
+            </ul>
+        </div>
+        <div class="card success">
+            <h4>建立物理边界的方法</h4>
+            <ul style="padding-left: 20px;">
+                <li><strong>创造"安全空间"</strong>：在家里有一个属于自己的角落</li>
+                <li><strong>学会说"不"</strong>：当别人侵入你的空间时，礼貌但坚定地拒绝</li>
+                <li><strong>物理隔离</strong>：用耳机、关门等方式创造安静环境</li>
+            </ul>
+        </div>
+    </div>
+
+    <h3>2.2 心理边界：情绪的自我管理</h3>
+    <p>你容易被他人的情绪影响，这与镜像神经元的活跃有关。</p>
+
+    <div class="practice-box">
+        <h4>情绪边界建立三步法</h4>
+        <ol>
+            <li><strong>识别情绪来源</strong>：这个情绪是我的，还是别人的？我是因为自己的事难受，还是因为吸收了别人的情绪？</li>
+            <li><strong>情绪日记</strong>：记录每天的情绪变化，标注触发事件，区分"我的情绪"和"别人的情绪"。</li>
+            <li><strong>情绪释放</strong>：找到适合自己的方式——运动、写日记、画画、听音乐。</li>
+        </ol>
+    </div>
+
+    <h3>2.3 注意力边界：减少外界干扰</h3>
+
+    <div class="practice-box">
+        <h4>注意力边界的方法</h4>
+        <ol>
+            <li><strong>正念练习</strong>：学会觉察而不反应</li>
+            <li><strong>专注训练</strong>：使用番茄工作法，逐步延长专注时间</li>
+            <li><strong>环境管理</strong>：减少不必要的干扰源</li>
+            <li><strong>数字边界</strong>：设定固定时间查看消息</li>
+        </ol>
+    </div>
+
+    <h2>第三节：从受影响到自主</h2>
+
+    <h3>3.1 自主性的心理学基础</h3>
+    <p><span class="tooltip">自我决定理论<span class="tip-text">自我决定理论（Self-Determination Theory）：由Edward Deci和Richard Ryan提出，认为人类有三种基本心理需求：自主性（Autonomy）、胜任感（Competence）和关联性（Relatedness）。满足这些需求是心理健康的基础。</span></span>指出，人类有三种基本心理需求：</p>
+
+    <div class="two-col">
+        <div class="card">
+            <h4>自主性</h4>
+            <p>感到自己的行为是自愿的，而不是被外界强迫的。</p>
+        </div>
+        <div class="card">
+            <h4>胜任感</h4>
+            <p>感到自己有能力完成任务，对自己的能力有信心。</p>
+        </div>
+        <div class="card">
+            <h4>关联感</h4>
+            <p>感到与他人有连接，被关心和理解。</p>
+        </div>
+    </div>
+
+    <h3>3.2 正念练习：觉察而不反应</h3>
+
+    <div class="mindfulness-demo">
+        <p style="margin-bottom: 16px; font-weight: 600; color: var(--primary);">正念呼吸练习</p>
+        <div class="breath-circle">吸气...呼气...</div>
+        <p style="color: var(--text-light);">跟着呼吸的节奏，慢慢吸气4秒，屏住4秒，呼气4秒</p>
+        <p style="margin-top: 16px; font-size: 0.9em; color: var(--text-light);">
+            <strong>正念的核心</strong>：觉察而不反应<br>
+            当外界刺激出现时：觉察 → 暂停 → 选择
+        </p>
+    </div>
+
+    <h3>3.3 建立内在稳定的锚点</h3>
+    <p>HSP 容易被外界影响，所以需要建立内在的"锚点"。</p>
+
+    <div class="does-grid">
+        <div class="anchor-box">
+            <strong>一个固定的习惯</strong>
+            <span>比如每天早上写日记</span>
+        </div>
+        <div class="anchor-box">
+            <strong>一个核心价值观</strong>
+            <span>比如"我的感受是重要的"</span>
+        </div>
+        <div class="anchor-box">
+            <strong>一个支持你的人</strong>
+            <span>比如你的女朋友</span>
+        </div>
+        <div class="anchor-box">
+            <strong>一个让你平静的地方</strong>
+            <span>比如图书馆的某个角落</span>
+        </div>
+    </div>
+
+    <h2>第四节：实践方法</h2>
+
+    <div class="practice-box">
+        <h4>练习一：每日正念练习</h4>
+        <p>每天花10分钟：</p>
+        <ol>
+            <li>找一个安静的地方坐下</li>
+            <li>闭上眼睛，专注于呼吸</li>
+            <li>当思绪出现时，觉察它，然后让它过去</li>
+            <li>不评判，只是觉察</li>
+            <li>5-10分钟后，慢慢睁开眼睛</li>
+        </ol>
+    </div>
+
+    <div class="practice-box">
+        <h4>练习二：边界设定渐进式练习</h4>
+        <table style="box-shadow: none; background: transparent;">
+            <thead>
+                <tr style="background: #5F3DC4;"><th>等级</th><th>练习内容</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>1</td><td>在图书馆用包占座时，告诉自己"这是我的空间"</td></tr>
+                <tr><td>2</td><td>当别人过来时，礼貌地说"这里有人"</td></tr>
+                <tr><td>3</td><td>当妈妈发消息时，告诉自己"我稍后回复"</td></tr>
+                <tr><td>4</td><td>当领导找你时，设定回复的时间</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="card highlight" style="margin-top: 40px;">
+        <h4>本章小结</h4>
+        <ul style="padding-left: 20px;">
+            <li>敏感性是一种先天特质，不是缺陷</li>
+            <li>HSP 有独特的生理基础和优势</li>
+            <li>建立物理、心理和注意力的三重边界</li>
+            <li>正念练习帮助你"觉察而不反应"</li>
+            <li>建立内在锚点，减少外界影响</li>
+            <li>将敏感性从负担转化为优势</li>
+        </ul>
+    </div>
+
+    <div class="nav-links">
+        <a href="../04_精力管理与决策疲劳/index.html">← 第四章：精力管理与决策疲劳</a>
+        <a href="../06_饮食睡眠与生活方式/index.html">第六章：饮食、睡眠与生活方式 →</a>
+    </div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第一章 · 总论：成因全方位剖析</title>
+<style>
+:root{
+  --bg:#f7f9fc; --card:#ffffff; --ink:#1f2937; --muted:#6b7280;
+  --line:#e5e7eb; --brand:#2563eb; --brand-soft:#eff6ff;
+  --amber:#d97706; --amber-soft:#fef3c7; --green:#059669; --green-soft:#ecfdf5;
+  --rose:#e11d48; --rose-soft:#ffe4e6; --violet:#7c3aed; --violet-soft:#f5f3ff;
+  --shadow:0 1px 3px rgba(0,0,0,.06),0 8px 24px rgba(0,0,0,.04);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--ink);line-height:1.75;font-size:15px}
+.wrap{max-width:1180px;margin:0 auto;padding:28px 24px 80px}
+.topnav{display:flex;align-items:center;justify-content:space-between;padding:14px 20px;background:var(--card);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);margin-bottom:28px;position:sticky;top:14px;z-index:50}
+.topnav a{color:var(--brand);text-decoration:none;font-weight:600;font-size:14px}
+.topnav .crumb{color:var(--muted);font-size:13px}
+.topnav .crumb b{color:var(--ink)}
+.hero{background:linear-gradient(135deg,#eff6ff 0%,#f5f3ff 100%);border:1px solid var(--line);border-radius:18px;padding:34px 32px;margin-bottom:30px;box-shadow:var(--shadow)}
+.hero h1{font-size:26px;letter-spacing:.5px;margin-bottom:10px}
+.hero .sub{color:var(--muted);font-size:14px;max-width:760px}
+.hero .goal{margin-top:16px;display:inline-block;background:var(--brand);color:#fff;padding:8px 16px;border-radius:999px;font-size:13px}
+h2.sec{font-size:20px;margin:38px 0 16px;padding-left:14px;border-left:5px solid var(--brand)}
+h3.sub{font-size:16.5px;margin:24px 0 12px;color:#111827}
+p{margin:10px 0}
+ul,ol{margin:10px 0 10px 22px}
+li{margin:6px 0}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:18px 0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px 22px;box-shadow:var(--shadow)}
+.card.amber{background:var(--amber-soft);border-color:#fcd34d}
+.card.green{background:var(--green-soft);border-color:#a7f3d0}
+.card.rose{background:var(--rose-soft);border-color:#fecdd3}
+.card.violet{background:var(--violet-soft);border-color:#ddd6fe}
+.card h4{font-size:15px;margin-bottom:10px}
+table{width:100%;border-collapse:collapse;margin:14px 0;background:var(--card);border-radius:12px;overflow:hidden;box-shadow:var(--shadow)}
+th,td{padding:12px 14px;text-align:left;border-bottom:1px solid var(--line);font-size:14px;vertical-align:top}
+th{background:#f3f4f6;font-weight:600}
+tr:last-child td{border-bottom:none}
+.term{color:var(--brand);border-bottom:1px dashed var(--brand);cursor:help;position:relative}
+.term:hover{background:var(--brand-soft)}
+.tip{display:none;position:absolute;left:0;top:130%;width:280px;background:#111827;color:#fff;padding:12px 14px;border-radius:10px;font-size:13px;line-height:1.6;z-index:100;box-shadow:0 6px 20px rgba(0,0,0,.2)}
+.term:hover .tip,.term:focus .tip{display:block}
+.callout{border-left:5px solid var(--amber);background:var(--amber-soft);padding:16px 18px;border-radius:0 12px 12px 0;margin:18px 0}
+.callout.g{border-color:var(--green);background:var(--green-soft)}
+.callout.b{border-color:var(--brand);background:var(--brand-soft)}
+.action{background:linear-gradient(135deg,#ecfdf5,#eff6ff);border:1px solid #a7f3d0;border-radius:14px;padding:22px;margin:24px 0}
+.action h4{color:var(--green);margin-bottom:10px}
+.flow{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:16px 0}
+.flow .node{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:10px 14px;font-size:13px;box-shadow:var(--shadow)}
+.flow .node.bad{border-color:#fecdd3;background:var(--rose-soft)}
+.flow .arr{color:var(--muted);font-weight:700}
+.svg-box{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;margin:18px 0;box-shadow:var(--shadow)}
+.pill{display:inline-block;background:var(--brand-soft);color:var(--brand);padding:3px 10px;border-radius:999px;font-size:12px;margin:2px}
+.foot{text-align:center;color:var(--muted);font-size:13px;margin-top:50px;padding-top:24px;border-top:1px solid var(--line)}
+@media(max-width:860px){.two-col{grid-template-columns:1fr}.topnav{position:static}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="topnav">
+    <a href="../index.html">← 返回主页</a>
+    <div class="crumb">教程 / <b>第一章 总论：成因全方位剖析</b></div>
+    <a href="../02_沟通抗拒与权益维护/chapter2.html">第二章 →</a>
+  </div>
+
+  <div class="hero">
+    <h1>第一章 · 总论：成因全方位剖析</h1>
+    <div class="sub">把"你"作为一个完整系统讲清楚——这套程序是谁写的、怎么运行的、为什么难改。后面每一章，都是在改这个系统的某个具体模块。这一章是地基。</div>
+    <div class="goal">目标：看清系统 → 看懂运行 → 能动手改</div>
+  </div>
+
+  <h2 class="sec">1.1 核心比喻：你是一台可重写程序的机器</h2>
+  <p>你的自我认知里有一句非常精准的话：</p>
+  <div class="callout">
+    "基因生理原始条件构成了你的基本反馈器，然后原生家庭创建了你的基本程序，后面的环境不变修正改变你的程序。"
+  </div>
+  <p>这个比喻在心理学和神经科学上完全成立。展开成三层模型：</p>
+
+  <table>
+    <tr><th style="width:22%">层级</th><th style="width:30%">是什么</th><th style="width:26%">谁写的</th><th>能不能改</th></tr>
+    <tr><td><b>硬件层（反馈器）</b></td><td>基因、神经系统、气质类型、生理基础</td><td>先天 + 早期发育</td><td>难改（但可调节）</td></tr>
+    <tr><td><b>系统层（基本程序）</b></td><td>依恋模式、情绪应对、人际模板、认知习惯</td><td>原生家庭（0-18岁为主）</td><td>可改，但需反复重写</td></tr>
+    <tr><td><b>应用层（程序修正）</b></td><td>具体行为选择、当下反应方式</td><td>后续环境 + 主观能动性</td><td>最容易改，是改变入口</td></tr>
+  </table>
+
+  <div class="callout b">
+    <b>辩证唯物主义视角：</b>硬件和系统层是客观存在的、是主要的；但你不是被它们决定的——主观能动性是"启动器"，通过改变客观环境（应用层），反过来重塑系统层。你的"买花从不适到正常"就是一次成功的应用层→系统层重写。
+  </div>
+
+  <h2 class="sec">1.2 (a) 成长过程的成因</h2>
+
+  <div class="two-col">
+    <div class="card rose">
+      <h4>你母亲的程序（你"下载"的模板）</h4>
+      <ul>
+        <li><b>回避冲突型应对</b>：被指责→不反抗不沟通→向你倾诉→坚持干满→事后抱怨</li>
+        <li><b>"信守承诺"到自我伤害</b>：明知对方事多、工资没结清，仍干满月底</li>
+        <li><b>负向归因</b>：归因为"别人不好"，而非"我本可早点行动"</li>
+        <li><b>危机导向思维</b>：总是先看到不好和危险的点</li>
+      </ul>
+    </div>
+    <div class="card violet">
+      <h4>你从中"下载"到的程序</h4>
+      <ul>
+        <li>沟通=危险/无效 → 回避打电话、回避领导</li>
+        <li>维护权益=不应该 → 空调被糊弄也不了了之</li>
+        <li>守"规则">守自己 → 教务处拖延半年、请假也拖着</li>
+        <li>事后抱怨替代事前行动 → 睡前想清楚、醒来又抗拒</li>
+      </ul>
+    </div>
+  </div>
+  <p>这不是你"学坏"，而是<span class="term">你没有"直接行动维护自己"的模板可抄<span class="tip">代际遗传的本质是模板复制。你只有一个参考对象，而那个对象的程序本身就有bug。改变需要新模板（看别人怎么做）+ 自己实践。</span></span>。</p>
+
+  <h3 class="sub">1.2.1 依恋类型：你偏向焦虑+回避混合</h3>
+  <table>
+    <tr><th>类型</th><th>形成条件</th><th>成年表现</th></tr>
+    <tr><td><b>安全型</b></td><td>照顾者回应稳定、反馈清晰、可预测</td><td>敢表达、敢依赖、敢独立、冲突能修复</td></tr>
+    <tr><td><b>焦虑型</b></td><td>照顾者回应不一致（时好时坏）</td><td>害怕被弃、过度寻求确认、情绪易起伏</td></tr>
+    <tr><td><b>回避型</b></td><td>照顾者回应冷淡/拒绝</td><td>压抑需求、回避亲密、独自扛</td></tr>
+    <tr><td><b>混乱型</b></td><td>照顾者本身是恐惧源</td><td>想靠近又想逃、行为矛盾</td></tr>
+  </table>
+  <p>你的情况偏向<b>焦虑+回避混合</b>：内心有强烈的在意（怕领导找、怕遇到熟人、心里慌），但行为上表现为回避（不打招呼、不开微信）。这种"既想又被禁"的内部矛盾，正是<span class="term">内耗<span class="tip">意识（前额叶）能看见问题，但默认程序（基底神经节、杏仁核通路）自动运行不经过意识。意识看见矛盾却管不住自动反应——这是"内在矛盾"的生理基础。</span></span>的来源。</p>
+
+  <div class="callout">
+    <b>关键认知：</b>安全型家庭的核心是"可预测的、清晰的反馈"。你母亲的模式恰恰是模糊的（不直接行动、事后才爆发情绪），所以你的系统一直在"威胁未解除"的待机耗电状态。
+  </div>
+
+  <h2 class="sec">1.3 (b) 性格本身的成因</h2>
+
+  <div class="two-col">
+    <div class="card violet">
+      <h4>1.3.1 高敏感气质（HSP）</h4>
+      <p><span class="term">高敏感人群<span class="tip">Highly Sensitive Person，Aron提出，约占人口15-20%，是先天的、生理性的特质。特征：对外界刺激反应更强、易被过度刺激淹没、共情强、细节敏锐、需更多独处恢复。神经机制是杏仁核基线活跃度更高。</span></span></p>
+      <p>你的表现（语音被打扰就不想弄、图书馆注意力被影响、对母亲第二句话就反感）都是HSP的典型反应——<b>不是你脆弱，是你的神经系统阈值更低，同样强度的刺激对你来说"更响"</b>。</p>
+    </div>
+    <div class="card amber">
+      <h4>1.3.2 回避型应对倾向</h4>
+      <p>面对威胁，人有三种本能反应：战斗/逃跑/冻结。你的主导策略是<b>逃跑+冻结</b>。</p>
+      <p>回避短期"有效"——立刻消除不适；但长期最糟：①问题没解决还在积累 ②大脑学到"回避=舒服"强化通路 ③问题变大后更难处理。</p>
+    </div>
+  </div>
+
+  <div class="two-col">
+    <div class="card">
+      <h4>1.3.3 完美主义 + 非黑即白</h4>
+      <p>"软件装4个版本""买衣服纠结几小时"背后是<b>最大化倾向</b>（必须找到最优解）和<b>非黑即白</b>（不是最好就是不行）。</p>
+      <p>这与母亲"要么守诺干满、要么就是对方不好"是同构的——无法容忍"中间地带""足够好""灰度"。</p>
+    </div>
+    <div class="card green">
+      <h4>1.3.4 控制感需求 vs 不确定性</h4>
+      <p>你既需要控制感（折腾软件到最顺手），又恐惧不确定性（换工作想负面结果就想终结）。</p>
+      <p>悖论：<b>越想控制越焦虑</b>，因为现实永远有不确定性。真正的解法不是更多控制，而是"对不确定的耐受"。</p>
+    </div>
+  </div>
+
+  <h2 class="sec">1.4 (c) 生理上的因素成因</h2>
+
+  <h3 class="sub">1.4.1 神经可塑性：旧通路越走越宽</h3>
+  <div class="svg-box">
+    <svg viewBox="0 0 680 200" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+      <text x="20" y="30" font-size="13" fill="#6b7280">神经通路强弱示意（线条越粗=通路越强=越易被默认选择）</text>
+      <!-- 旧通路 高速公路 -->
+      <path d="M 60 100 C 200 100, 280 100, 480 100" stroke="#e11d48" stroke-width="14" fill="none" stroke-linecap="round" opacity="0.85"/>
+      <text x="60" y="80" font-size="13" fill="#e11d48" font-weight="bold">回避（旧通路）</text>
+      <text x="60" y="125" font-size="11" fill="#9ca3af">十几年来反复走 → 宽阔高速公路</text>
+      <!-- 新通路 荒草小路 -->
+      <path d="M 60 160 C 200 160, 280 150, 480 140" stroke="#059669" stroke-width="3" fill="none" stroke-linecap="round" stroke-dasharray="6 5"/>
+      <text x="60" y="180" font-size="13" fill="#059669" font-weight="bold">直接行动（新通路）</text>
+      <text x="490" y="145" font-size="11" fill="#9ca3af">荒草小路，需反复走才变宽</text>
+      <circle cx="480" cy="100" r="6" fill="#e11d48"/>
+      <circle cx="480" cy="140" r="6" fill="#059669"/>
+      <text x="500" y="105" font-size="12" fill="#374151">默认选择</text>
+      <text x="500" y="145" font-size="12" fill="#374151">需刻意走</text>
+    </svg>
+  </div>
+  <p><span class="term">经验依赖性神经可塑性<span class="tip">Hebb定律："一起放电的神经元会连在一起"。反复激活的通路被强化，少用的通路被修剪（突触修剪）。改变的本质不是消灭旧路，而是反复走新路让它变宽。</span></span>：你十几年来反复走"回避"这条路，已是一条高速公路；"直接行动"是荒草小路。每次面对情境，大脑默认走高速公路——又快又省力。</p>
+
+  <h3 class="sub">1.4.2 杏仁核 vs 前额叶的拉锯</h3>
+  <div class="two-col">
+    <div class="card rose">
+      <h4>杏仁核（情绪警报）</h4>
+      <ul>
+        <li>0.02秒触发"威胁"反应，不经意识</li>
+        <li>高敏感者基线更活跃</li>
+        <li>反应快、省力、自动化</li>
+      </ul>
+    </div>
+    <div class="card green">
+      <h4>前额叶皮层（理性）</h4>
+      <ul>
+        <li>0.3秒+才上线，耗能高、易疲劳</li>
+        <li>负责计划、抑制冲动、理性判断</li>
+        <li>睡眠/饮食不足时率先下降</li>
+      </ul>
+    </div>
+  </div>
+  <p>你的体验"睡前想明白（前额叶主导，杏仁核平静），醒来又抗拒（杏仁核被白天压力激活，前额叶还没上线）"就是这个拉锯。<b>这不是意志薄弱，是生理上杏仁核就是比前额叶快</b>。</p>
+
+  <div class="callout g">
+    <b>因此改变策略不能只靠"我要更坚强"，而要：</b><br>
+    ① 降低杏仁核激活（睡眠、饮食、环境安全感）<br>
+    ② 给前额叶助力（脚本化、写下来、降低决策门槛）<br>
+    ③ 在杏仁核还没反应过来时就行动（2分钟法则）
+  </div>
+
+  <h3 class="sub">1.4.3 精力/睡眠/饮食 = 前额叶的燃料</h3>
+  <p>前额叶是全身最耗能的脑区之一。睡眠不足、血糖波动、营养不足时，前额叶功能率先下降，杏仁核相对增强——<b>你状态差时更无法行动，有生理基础</b>。</p>
+  <div class="flow">
+    <span class="node">睡眠差</span><span class="arr">→</span>
+    <span class="node">前额叶↓</span><span class="arr">→</span>
+    <span class="node bad">杏仁核相对↑</span><span class="arr">→</span>
+    <span class="node bad">回避更强</span><span class="arr">→</span>
+    <span class="node bad">行动更难</span>
+  </div>
+  <p>你的发现都对：23-24℃+60-70%湿度更易入睡（体温下降+舒适是入睡生理条件）；蛋白质不足影响神经递质合成；蔬菜不足影响微量元素和肠脑轴。<b>改善饮食睡眠不是"养生"，是给前额叶供能，是改变的前提条件。</b></p>
+
+  <div class="callout">
+    <b>1.4.4 心脏术后生理脆弱期：</b>你最近做了心脏手术，第四周还没上班。术后神经系统处于高敏感、低储备状态，任何压力都被放大，行动力自然更低。<b>请把这视为生理现实，而不是"我又不行了"的证据</b>。这个阶段降低期待、保护恢复，本身就是正确的行动。
+  </div>
+
+  <h2 class="sec">1.5 (d) 现有的理论和技巧工具箱</h2>
+  <div class="two-col">
+    <div class="card">
+      <h4>依恋理论</h4>
+      <p>理解"既想靠近又想逃"的矛盾来源。工具：识别自己的依恋模式，寻找"安全型他人"作为新模板。</p>
+      <span class="pill">Bowlby & Ainsworth</span>
+    </div>
+    <div class="card">
+      <h4>认知行为疗法 CBT · ABC模型</h4>
+      <p>A事件→B信念→C结果。问题很多在B（"她会觉得我不好""打了也没用"）。工具：记录ABC，质疑B，替换为更准确的B。</p>
+      <span class="pill">Beck</span>
+    </div>
+    <div class="card">
+      <h4>接纳承诺疗法 ACT</h4>
+      <p>不与念头对抗，<span class="term">认知解离<span class="tip">把念头看作"念头本身"而非"事实"。"我注意到我有一个'打了也没用'的念头"——然后照样去打。念头不必决定行动。</span></span>。明确价值方向，带着不适做出价值行动。</p>
+      <span class="pill">Hayes</span>
+    </div>
+    <div class="card">
+      <h4>习惯回路</h4>
+      <p>提示→行为→奖赏。改变不是消灭提示，而是替换行为或设计新提示。工具：给"想到就干"设计触发器。</p>
+      <span class="pill">Duhigg</span>
+    </div>
+    <div class="card">
+      <h4>神经可塑性原理</h4>
+      <p>学—抄—做三阶段（你自己总结的，完全正确）。重复+情绪+睡眠=巩固新通路。工具：小步重复，允许反复，记录进度。</p>
+      <span class="pill">Doidge</span>
+    </div>
+    <div class="card">
+      <h4>自我决定理论 SDT</h4>
+      <p>内在动机三要素：<b>自主感</b>（我选的）、<b>胜任感</b>（我能做到）、<b>关系感</b>（有连接）。你"不得不做"太多，自主感被剥夺，动力枯竭。</p>
+      <span class="pill">Deci & Ryan</span>
+    </div>
+  </div>
+  <div class="callout b">
+    <b>辩证唯物主义实践框架：</b>客观环境是主要的 → 改变要落到改变环境（换居住、换接触的人）；主观能动性是启动器 → 状态好时攒行动，状态差时靠已固化的结构；事物发展是螺旋的 → <b>反复是规律，不是倒退</b>。
+  </div>
+
+  <h2 class="sec">1.6 你的系统全景图</h2>
+  <div class="svg-box">
+    <svg viewBox="0 0 680 460" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+      <!-- 硬件层 -->
+      <rect x="20" y="20" width="640" height="70" rx="10" fill="#fef3c7" stroke="#fcd34d"/>
+      <text x="40" y="48" font-size="14" font-weight="bold" fill="#92400e">硬件层（反馈器）</text>
+      <text x="40" y="70" font-size="12" fill="#78350f">高敏感气质 + 回避倾向 + 生理脆弱期（心脏术后）</text>
+      <text x="560" y="55" font-size="20" fill="#92400e">↓ 塑造</text>
+
+      <!-- 系统层 -->
+      <rect x="20" y="110" width="640" height="90" rx="10" fill="#ffe4e6" stroke="#fecdd3"/>
+      <text x="40" y="138" font-size="14" font-weight="bold" fill="#9f1239">系统层（原生家庭程序）</text>
+      <text x="40" y="160" font-size="12" fill="#881337">回避沟通 / 守诺自伤 / 负向归因 / 模糊反馈 / 危机导向</text>
+      <text x="40" y="182" font-size="12" fill="#881337">焦虑+回避混合依恋 · 完美主义 · 非黑即白</text>
+      <text x="560" y="160" font-size="20" fill="#9f1239">↓ 运行</text>
+
+      <!-- 应用层 -->
+      <rect x="20" y="220" width="640" height="90" rx="10" fill="#eff6ff" stroke="#bfdbfe"/>
+      <text x="40" y="248" font-size="14" font-weight="bold" fill="#1e40af">应用层（当下表现）</text>
+      <text x="40" y="270" font-size="12" fill="#1e3a8a">拖延电话 · 回避领导 · 投简历拖延 · 软件痴迷 · 与母亲冲突</text>
+      <text x="40" y="292" font-size="12" fill="#1e3a8a">教务处拖延半年 · 睡前想明白醒来抗拒</text>
+      <text x="560" y="270" font-size="20" fill="#1e40af">↓ 反馈</text>
+
+      <!-- 恶性循环 -->
+      <rect x="20" y="330" width="640" height="60" rx="10" fill="#fee2e2" stroke="#fca5a5"/>
+      <text x="40" y="358" font-size="13" font-weight="bold" fill="#991b1b">⚠ 恶性循环</text>
+      <text x="40" y="378" font-size="12" fill="#7f1d1d">回避→短期缓解→强化回避通路→问题积累→更难行动</text>
+
+      <!-- 改变入口 箭头 -->
+      <path d="M 340 400 L 340 440" stroke="#059669" stroke-width="3" marker-end="url(#arrowG)"/>
+      <defs><marker id="arrowG" markerWidth="10" markerHeight="10" refX="5" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#059669"/></marker></defs>
+      <text x="355" y="425" font-size="12" fill="#059669" font-weight="bold">改变的入口：应用层小行动</text>
+    </svg>
+  </div>
+
+  <div class="callout b">
+    <b>一句话总结：</b>你不是"有问题的人"，你是一台运行着旧程序、且现在生理低电量、但<b>完全可以重写程序的机器</b>。重写的入口是应用层的小行动，重写的燃料是正反馈，重写的耐心来自"反复是规律不是失败"。
+  </div>
+
+  <div class="action">
+    <h4>✓ 进入下一章前的一个小行动（2分钟）</h4>
+    <p>改变从这一刻就开始，不是"等我看完教程"。</p>
+    <p><b>现在就做：</b>拿出手机备忘录，新建一个文件叫"正反馈记录"，写下第一条：</p>
+    <div class="callout g" style="margin:8px 0">
+      "我已经打了公租房电话，他们答应换空调。这是我维护自己权益的一次行动。"
+    </div>
+    <p>这一条记录，就是你在应用层走出的新路的第一步。后面每一章结束，都往这个文件加一条。</p>
+  </div>
+
+  <div class="foot">
+    下一章：<a href="../02_沟通抗拒与权益维护/chapter2.html" style="color:var(--brand)">第二章 沟通抗拒与权益维护 →</a>
+  </div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第四章 · 原生家庭代际遗传</title>
+<style>
+:root{--bg:#f7f9fc;--card:#fff;--ink:#1f2937;--muted:#6b7280;--line:#e5e7eb;--brand:#2563eb;--brand-soft:#eff6ff;--amber:#d97706;--amber-soft:#fef3c7;--green:#059669;--green-soft:#ecfdf5;--rose:#e11d48;--rose-soft:#ffe4e6;--violet:#7c3aed;--violet-soft:#f5f3ff;--shadow:0 1px 3px rgba(0,0,0,.06),0 8px 24px rgba(0,0,0,.04)}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--ink);line-height:1.75;font-size:15px}
+.wrap{max-width:1180px;margin:0 auto;padding:28px 24px 80px}
+.topnav{display:flex;align-items:center;justify-content:space-between;padding:14px 20px;background:var(--card);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);margin-bottom:28px;position:sticky;top:14px;z-index:50}
+.topnav a{color:var(--brand);text-decoration:none;font-weight:600;font-size:14px}
+.topnav .crumb{color:var(--muted);font-size:13px}.topnav .crumb b{color:var(--ink)}
+.hero{background:linear-gradient(135deg,#f5f3ff,#eff6ff);border:1px solid var(--line);border-radius:18px;padding:34px 32px;margin-bottom:30px;box-shadow:var(--shadow)}
+.hero h1{font-size:26px;margin-bottom:10px}.hero .sub{color:var(--muted);font-size:14px;max-width:760px}
+h2.sec{font-size:20px;margin:38px 0 16px;padding-left:14px;border-left:5px solid var(--brand)}
+h3.sub{font-size:16.5px;margin:24px 0 12px;color:#111827}
+p{margin:10px 0}ul,ol{margin:10px 0 10px 22px}li{margin:6px 0}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:18px 0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px 22px;box-shadow:var(--shadow)}
+.card.amber{background:var(--amber-soft);border-color:#fcd34d}.card.green{background:var(--green-soft);border-color:#a7f3d0}.card.rose{background:var(--rose-soft);border-color:#fecdd3}.card.b{background:var(--brand-soft);border-color:#bfdbfe}.card.v{background:var(--violet-soft);border-color:#ddd6fe}
+.card h4{font-size:15px;margin-bottom:10px}
+table{width:100%;border-collapse:collapse;margin:14px 0;background:var(--card);border-radius:12px;overflow:hidden;box-shadow:var(--shadow)}
+th,td{padding:12px 14px;text-align:left;border-bottom:1px solid var(--line);font-size:14px;vertical-align:top}
+th{background:#f3f4f6;font-weight:600}tr:last-child td{border-bottom:none}
+.term{color:var(--brand);border-bottom:1px dashed var(--brand);cursor:help;position:relative}.term:hover{background:var(--brand-soft)}
+.tip{display:none;position:absolute;left:0;top:130%;width:280px;background:#111827;color:#fff;padding:12px 14px;border-radius:10px;font-size:13px;line-height:1.6;z-index:100;box-shadow:0 6px 20px rgba(0,0,0,.2)}
+.term:hover .tip,.term:focus .tip{display:block}
+.callout{border-left:5px solid var(--amber);background:var(--amber-soft);padding:16px 18px;border-radius:0 12px 12px 0;margin:18px 0}
+.callout.g{border-color:var(--green);background:var(--green-soft)}.callout.b{border-color:var(--brand);background:var(--brand-soft)}.callout.r{border-color:var(--rose);background:var(--rose-soft)}.callout.v{border-color:var(--violet);background:var(--violet-soft)}
+.action{background:linear-gradient(135deg,#ecfdf5,#eff6ff);border:1px solid #a7f3d0;border-radius:14px;padding:22px;margin:24px 0}
+.action h4{color:var(--green);margin-bottom:10px}
+.svg-box{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;margin:18px 0;box-shadow:var(--shadow)}
+.checklist{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px 22px;box-shadow:var(--shadow);margin:18px 0}
+.checklist li{list-style:none;margin-left:0}
+.foot{text-align:center;color:var(--muted);font-size:13px;margin-top:50px;padding-top:24px;border-top:1px solid var(--line)}
+@media(max-width:860px){.two-col{grid-template-columns:1fr}.topnav{position:static}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="topnav">
+    <a href="../03_行动瘫痪与间歇性动机/chapter3.html">← 第三章</a>
+    <div class="crumb">教程 / <b>第四章 原生家庭代际遗传</b></div>
+    <a href="../05_决策疲劳与完美主义/chapter5.html">第五章 →</a>
+  </div>
+
+  <div class="hero">
+    <h1>第四章 · 原生家庭代际遗传</h1>
+    <div class="sub">看清你和母亲为什么"同构"，理解代际传递的神经机制，基于你自己已发现的"学—抄—做"原理，建立新的改变通路。核心案例：母亲江边驿站、代课、攒塑料袋、你的买花转变。</div>
+  </div>
+
+  <h2 class="sec">4.1 现象：你和母亲是同一套程序的两次运行</h2>
+  <table>
+    <tr><th>维度</th><th>母亲</th><th>你</th></tr>
+    <tr><td>面对不适他人</td><td>被指责→不反抗不沟通→向你倾诉</td><td>被否定→不沟通→内心纠结</td></tr>
+    <tr><td>明知该止损</td><td>"说好干到月底"→干满→被坑→抱怨</td><td>教务处/请假/投简历→明知该做→拖→自责</td></tr>
+    <tr><td>负向归因</td><td>"是她逼走我的""这个人不行"</td><td>"打了也没用""她肯定觉得我不好"</td></tr>
+    <tr><td>危机导向</td><td>总看到不好和危险的点</td><td>换工作想负面结果就想终结</td></tr>
+    <tr><td>节俭克己</td><td>攒塑料袋、洗澡水洗衣服</td><td>凑单、舍不得买水买外卖</td></tr>
+    <tr><td>守"规则"&gt;守自己</td><td>信守承诺到自我伤害</td><td>守"该有的样子"到拖延自伤</td></tr>
+  </table>
+  <div class="callout v"><b>这不是巧合，是程序复制。</b>你自己已点破："代际遗传就是人的行为很多是模仿，然后实践，然后就内化了。"</div>
+
+  <h2 class="sec">4.2 成因：代际遗传的神经机制</h2>
+  <h3 class="sub">4.2.1 模仿—实践—内化（你已总结的三阶段，完全正确）</h3>
+  <div class="svg-box">
+    <svg viewBox="0 0 680 180" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+      <text x="20" y="25" font-size="13" fill="#6b7280">学—抄—做：神经通路从"看"到"自动"的三阶段</text>
+      <rect x="30" y="55" width="170" height="90" rx="10" fill="#eff6ff" stroke="#bfdbfe"/>
+      <text x="115" y="80" text-anchor="middle" font-size="14" font-weight="bold" fill="#1e40af">① 学（看）</text>
+      <text x="115" y="102" text-anchor="middle" font-size="11" fill="#374151">镜像神经元</text>
+      <text x="115" y="120" text-anchor="middle" font-size="11" fill="#374151">观察学习</text>
+      <text x="115" y="138" text-anchor="middle" font-size="11" fill="#6b7280">虚拟运行模板</text>
+      <text x="210" y="100" font-size="20" fill="#7c3aed">→</text>
+      <rect x="240" y="55" width="170" height="90" rx="10" fill="#f5f3ff" stroke="#ddd6fe"/>
+      <text x="325" y="80" text-anchor="middle" font-size="14" font-weight="bold" fill="#6d28d9">② 抄（实践）</text>
+      <text x="325" y="102" text-anchor="middle" font-size="11" fill="#374151">类似情境调用模板</text>
+      <text x="325" y="120" text-anchor="middle" font-size="11" fill="#374151">带点生硬地做</text>
+      <text x="325" y="138" text-anchor="middle" font-size="11" fill="#6b7280">每次强化通路</text>
+      <text x="420" y="100" font-size="20" fill="#059669">→</text>
+      <rect x="450" y="55" width="170" height="90" rx="10" fill="#ecfdf5" stroke="#a7f3d0"/>
+      <text x="535" y="80" text-anchor="middle" font-size="14" font-weight="bold" fill="#065f46">③ 做（内化）</text>
+      <text x="535" y="102" text-anchor="middle" font-size="11" fill="#374151">从"刻意"到"自动"</text>
+      <text x="535" y="120" text-anchor="middle" font-size="11" fill="#374151">不再选择，就是默认</text>
+      <text x="535" y="138" text-anchor="middle" font-size="11" fill="#6b7280">新通路变宽</text>
+    </svg>
+  </div>
+  <p>这在神经科学上叫<span class="term">观察学习+经验依赖性神经可塑性<span class="tip">Bandura社会学习理论：孩子通过观察重要他人的行为及后果学习"这事该怎么做"。镜像神经元让你观察时自己的相关脑区也在"虚拟运行"。反复强化后行为从"刻意"变"自动"。</span></span>。</p>
+
+  <div class="callout r"><b>4.2.2 为什么只有一个模板就难改：</b>你自己点破——"你意识到问题，但还无法改变，就是你没有新的对象，只是内在矛盾。之前的路你觉得有问题，但没看到新的路，自己趟路很难。"<br><br>这是"模板单一性"问题。否定旧模板只会制造矛盾，<b>改变需要新模板的输入</b>。</div>
+
+  <h3 class="sub">4.2.3 你的三层模型（你自己写的，整理如下）</h3>
+  <div class="svg-box">
+    <svg viewBox="0 0 680 220" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+      <rect x="20" y="20" width="640" height="55" rx="10" fill="#fef3c7" stroke="#fcd34d"/>
+      <text x="40" y="45" font-size="13" font-weight="bold" fill="#92400e">基本反馈器</text>
+      <text x="40" y="64" font-size="12" fill="#78350f">基因 + 气质 + 神经系统基线 → 决定对刺激的初始反应强度</text>
+      <text x="600" y="50" font-size="16" fill="#92400e">↓</text>
+      <rect x="20" y="85" width="640" height="55" rx="10" fill="#ffe4e6" stroke="#fecdd3"/>
+      <text x="40" y="110" font-size="13" font-weight="bold" fill="#9f1239">基本程序（原生家庭，0-18岁为主）</text>
+      <text x="40" y="129" font-size="12" fill="#881337">写入默认应对方式、人际模板、认知习惯</text>
+      <text x="600" y="115" font-size="16" fill="#9f1239">↓</text>
+      <rect x="20" y="150" width="640" height="55" rx="10" fill="#eff6ff" stroke="#bfdbfe"/>
+      <text x="40" y="175" font-size="13" font-weight="bold" fill="#1e40af">程序修正（后续环境 + 接触的人）</text>
+      <text x="40" y="194" font-size="12" fill="#1e3a8a">新环境里旧程序"不够用"时自然调整；或主观能动性介入</text>
+    </svg>
+  </div>
+  <p><b>为什么很多人一辈子不变？</b>因为旧程序"够用"——能应付生活，虽痛苦但能活。大脑节能，"够用就不改"。改变一般来自环境天然改变（上大学、工作、搬家），或主观能动性介入。</p>
+
+  <div class="callout"><b>4.2.4 当今社会的"模板匮乏"：</b>原子化社会里能接触到的"安全型模板"很少。所以你需要<b>主动寻找和接触</b>——不只身边人，也可以是：内容（高质量心理/关系类内容）、朋友（敢直接表达敢维权的人）、伴侣（你女朋友已是新模板）。</div>
+
+  <h2 class="sec">4.3 你已经成功过：买花的案例</h2>
+  <div class="callout g">"我之前一直舍不得花钱……觉得买花、买首饰就是不舒服……但后来尝试买过几次花，和我女朋友在一起后，现在觉得出去吃个饭、买个花是正常的，这就是她改变我的地方。"</div>
+  <p>拆解这个过程，正好是"学—抄—做"：</p>
+  <div class="two-col">
+    <div class="card green">
+      <h4>三阶段实证</h4>
+      <p><b>① 学：</b>女朋友的存在让你看到"买花是正常的"新模板</p>
+      <p><b>② 抄：</b>尝试买过几次花（带点不适，但做了）</p>
+      <p><b>③ 做：</b>现在觉得正常——新通路变宽，旧通路变窄</p>
+    </div>
+    <div class="card b">
+      <h4>这个案例证明</h4>
+      <ul>
+        <li>改变是<b>可能的</b>（你已做过）</li>
+        <li>引擎是"新模板 + 小步实践 + 重复"</li>
+        <li>不需要"战胜"旧程序，只需"新建"通路让它越走越宽</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2 class="sec">4.4 但也有反复：攒水洗衣服的案例</h2>
+  <div class="callout r">"我妈和我一起生活，她就喜欢把洗澡的水攒下来洗衣服……导致我有一段时间也会这么做，但我后面又很反感。"</div>
+  <p>这个案例揭示关键风险：<b>旧模板一直在你身边持续输入，会重新激活旧通路</b>。</p>
+  <div class="two-col">
+    <div class="card green">
+      <h4>独处/与新模板在一起</h4>
+      <p>新模板主导</p>
+      <p>行为改善</p>
+      <p>新通路变宽</p>
+    </div>
+    <div class="card rose">
+      <h4>与母亲同住</h4>
+      <p>旧模板高频输入</p>
+      <p>旧通路被重新浇水</p>
+      <p>改变被抵消</p>
+    </div>
+  </div>
+  <div class="callout b"><b>这就是为什么"与母亲分开居住"是根本解</b>——不是因为你恨她，而是因为持续的高频旧模板输入会抵消你的改变努力。这是客观规律，不是情感问题。</div>
+
+  <h2 class="sec">4.5 方法：建立新的改变通路</h2>
+  <div class="two-col">
+    <div class="card v">
+      <h4>方法1：主动寻找"安全型"模板</h4>
+      <ul>
+        <li><b>人：</b>女朋友（已有）、敢表达敢维权的朋友、欣赏的同事</li>
+        <li><b>内容：</b>高质量心理/关系类书籍、视频、播客</li>
+        <li><b>想象：</b>"一个安全感足、敢表达的人，此刻会怎么做？"</li>
+      </ul>
+    </div>
+    <div class="card green">
+      <h4>方法2：与母亲分开居住（根本解）</h4>
+      <p>这不是逃避，是<b>降低旧通路被重新激活的频率</b>。独处或和新模板的人在一起时，改变通路才能稳固。</p>
+      <p>目前没法立刻分开的阶段，用方法3过渡。</p>
+    </div>
+  </div>
+  <div class="two-col">
+    <div class="card amber">
+      <h4>方法3：小范围实践并记录</h4>
+      <p>针对最想改的1-2点设计小实验：</p>
+      <ul>
+        <li>回避沟通→每周一次"直接表达"小行动</li>
+        <li>节俭克己→每周一次"为自己花钱"小行动</li>
+        <li>负向归因→每天记一件"其实没那么糟"的事</li>
+      </ul>
+      <p><b>关键：记录</b>（提供反馈和正情绪）</p>
+    </div>
+    <div class="card b">
+      <h4>方法4：把"学—抄—做"变成有意识流程</h4>
+      <p>面对"不知怎么处理"的情境时：</p>
+      <p><b>① 学：</b>"有没有见过别人怎么处理？"</p>
+      <p><b>② 抄：</b>照那个方式做一次，哪怕生硬</p>
+      <p><b>③ 做：</b>感觉还行就下周再做一次</p>
+      <p>你已无意识走过（买花），现在变成有意识工具。</p>
+    </div>
+  </div>
+  <div class="card rose">
+    <h4>方法5：识别"旧模板激活"的瞬间</h4>
+    <p>当突然出现强烈"不该这么做""会不好"的抗拒时，停下来问：</p>
+    <div class="callout v" style="margin:8px 0">"这个念头是我自己的，还是从我母亲那里下载的？"</div>
+    <p>很多时候你会识别出："这是我妈会有的反应。"——这个识别本身就削弱了它的自动化力量。<b>识别≠消除，但识别后你有了选择空间。</b></p>
+  </div>
+
+  <h2 class="sec">4.6 认知校准：不要试图"改好母亲"</h2>
+  <div class="callout">你可能会想"如果能让母亲也改变，我就不用受影响了"。这个想法要放下：</div>
+  <div class="two-col">
+    <div class="card rose">
+      <h4>三个原因</h4>
+      <p>① <b>你改变不了别人</b>，尤其不愿改变的长辈</p>
+      <p>② 把能量花在"改母亲"上低效，不如花在"建自己新通路"</p>
+      <p>③ 母亲也可能在重复她原生家庭的程序——她也是受害者，但不等于你有义务陪她困在里面</p>
+    </div>
+    <div class="card green">
+      <h4>你能做的最大好事</h4>
+      <p><b>自己先活成一个不同的样子。</b></p>
+      <p>这比任何劝说都有效，也保护了你自己。</p>
+    </div>
+  </div>
+
+  <h2 class="sec">4.7 本章实践清单</h2>
+  <div class="checklist">
+    <ul>
+      <li>☐ 列出你身上3个"和母亲同构"的行为模式（写下来，看见是第一步）</li>
+      <li>☐ 列出身边1-3个"安全型模板"的人/内容</li>
+      <li>☐ 选1个想改的点，设计1个小实验，本周做一次</li>
+      <li>☐ 把"买花转变"写进正反馈记录，作为"改变是可能的"的证据</li>
+      <li>☐ 评估"与母亲分开居住"的可行性，列入计划（即使不是立刻）</li>
+    </ul>
+  </div>
+
+  <div class="callout g"><b>小结：</b>代际遗传的本质是<b>模板复制</b>。意识到问题却改不了，是因为只有旧路、没看到新路——内在矛盾而非改变。改变的引擎是"学—抄—做"（你自己总结的，完全正确）。买花的成功案例已证明这条路是通的。但旧模板会持续重新激活旧通路，所以"分开居住"是降低旧输入的根本解。<b>你不是被原生家庭决定的人，你是被原生家庭"初始化"的人。初始化可以被覆盖——用新模板、小行动、重复。你已做过一次，现在把它变成方法。</b></div>
+
+  <div class="action">
+    <h4>✓ 章末行动（5分钟）</h4>
+    <p>列出你身上3个"和母亲同构"的行为模式。不需要改，只是看见。看见是改变的第一步——你无法改变你没看见的东西。</p>
+  </div>
+
+  <div class="foot">上一章：<a href="../03_行动瘫痪与间歇性动机/chapter3.html" style="color:var(--brand)">第三章</a> &nbsp;|&nbsp; 下一章：<a href="../05_决策疲劳与完美主义/chapter5.html" style="color:var(--brand)">第五章 决策疲劳与完美主义 →</a></div>
+
+</div>
+</body>
+</html>
